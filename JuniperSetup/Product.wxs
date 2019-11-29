@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Product Id="*" Name="Juniper" Language="1033" Version="2.2.0.0" Manufacturer="Juniper Project" UpgradeCode="E635FEAF-DD23-44C2-B27A-5D7A7AF3A2DD">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="Juniper" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="JuniperStandardLib" />
+      <ComponentGroupRef Id="JuniperWrappers" />
+      <ComponentGroupRef Id="JuniperExamples" />
+      <ComponentGroupRef Id="JuniperCppStd" />
+      <Component Id="Path" Guid="{2F5D82C8-F02C-4335-9256-1A4A7611554E}" Directory="TARGETDIR">
+        <Environment Id="PATH" Name="PATH" Value="[INSTALLFOLDER]" Permanent="no" Part="last" Action="set" System="yes" />
+      </Component>
+		</Feature>
+	</Product>
+  
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Juniper">
+          <Directory Id="JUNSTD" Name="junstd" />
+          <Directory Id="WRAPPERS" Name="wrappers" />
+          <Directory Id="EXAMPLES" Name="examples" />
+          <Directory Id="CPPSTD" Name="cppstd" />
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+    
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="cmpwOyqFMBrQmdAognEk7oadsul46g" Guid="*">
+	      <File Id="filNG_7HeoziS3ESqHDOmXber26E4M" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FSharp.Core.dll" />
+      </Component>
+      <Component Id="cmp3XwgfF2.E_sw3nSCHONW.y3VS4k" Guid="*">
+	      <File Id="filnsPLfIf572H.PrsVBHv0JoM0uHo" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FSharp.Core.xml" />
+      </Component>
+      <Component Id="cmpqW6_X8VFwIJwJ5yggcxLk6JMLp4" Guid="*">
+	      <File Id="filAyJsjJ8cj.H1zADinbJ6Kqe3A30" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FSharpx.Core.dll" />
+      </Component>
+      <Component Id="cmpetDOCaJzx5PViIGAlBV1vJErJWI" Guid="*">
+	      <File Id="fil.Bbl.UBUuIoevnUfnmBqpY9B01o" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FSharpx.Core.pdb" />
+      </Component>
+      <Component Id="cmpx4K8pgI3ODaWhfeMXgup_mk0z_A" Guid="*">
+	      <File Id="filHvKFyR07mBjCqE6VcqnKkUvkp.w" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FSharpx.Core.xml" />
+      </Component>
+      <Component Id="cmpgpzwQhKMEVW3CsYx1TWhizBgcYM" Guid="*">
+	      <File Id="filjtJf_Popx8goSZmlKRgO1sJDLh4" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/Juniper.exe" />
+      </Component>
+      <Component Id="cmpnw16dsUaknFEzkfuqAg4JgVEsAk" Guid="*">
+	      <File Id="filrr4S7Hk3cqDSFNqvjEZwjSCzjho" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/Juniper.exe.config" />
+      </Component>
+      <Component Id="cmpO_U4zSbCfsQYsLgB9mBuLoUOUyc" Guid="*">
+	      <File Id="fil3hLQ.UFkiheCaZDayPwlpYQ.S4E" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/Juniper.pdb" />
+      </Component>
+      <Component Id="cmp47cYBPMd7iqeUQKJCinxVzWIE_c" Guid="*">
+	      <File Id="filY8QajnR0iz5SeXCb9gnNQQe9GHY" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/Juniper.XML" />
+      </Component>
+      <Component Id="cmpATIWBRONRIwreIxlo3p0.4.cft4" Guid="*">
+        <File Id="filnbcbVO2N8UGem5a4U4yxdRHqOCw" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.Data.dll" />
+      </Component>
+      <Component Id="cmp.Ys42L8_9gVo9dwDzx4FFTDz_uQ" Guid="*">
+        <File Id="fildhASFXKkqzUphuxUCVBMhJHpl2I" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.Data.xml" />
+      </Component>
+      <Component Id="cmpSz8Ec7GCtLzknk.qtCzpVpwgX14" Guid="*">
+        <File Id="fil427e5ASXYKpE5pdiepLRk9n7hq8" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.dll" />
+      </Component>
+      <Component Id="cmpBEKxwtbLgQ950yxPBD_IINqJI6I" Guid="*">
+        <File Id="filBjLCFzHScwmv_xXc5vkKHyzRKFI" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.Graphviz.dll" />
+      </Component>
+      <Component Id="cmpkSlhVavDhXZ5cawIe5iI3PRDx28" Guid="*">
+        <File Id="filXX_0UDTsV3ltvB7WfTkPVwSI7i0" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.Graphviz.xml" />
+      </Component>
+      <Component Id="cmp73oNsNm3NahpN9X.5X_I.GGAjNc" Guid="*">
+        <File Id="fil08WXC0pSKWHzqv.ZI4SzO4d6UfI" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.Serialization.dll" />
+      </Component>
+      <Component Id="cmp.vEsFL4SYFwPlq4dAwDbhj2laqY" Guid="*">
+        <File Id="fil6Cvv2DaTpwuO359CQn1UP5LECHY" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.Serialization.xml" />
+      </Component>
+      <Component Id="cmpUSqH.chrDDJkvUPX5UpmvpH7YcY" Guid="*">
+        <File Id="filJjoNNh3H51ydRaEvy.Sqf0uO8gM" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/QuickGraph.xml" />
+      </Component>
+      <Component Id="cmpofbO0g2opGgq2atVcIZ9y5w74XQ" Guid="*">
+        <File Id="filRsvkIvEV7stWk2GyGX1eezF4zWI" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FParsec.dll" />
+      </Component>
+      <Component Id="cmpT3TiURraujTyjliY8KIAVMBITus" Guid="*">
+        <File Id="filGyrR3uo4ZxBK2plfWNi8CHwZpxc" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FParsec.xml" />
+      </Component>
+      <Component Id="cmpCDxEjWVtNbAsYxdIt8KDWkNbqoM" Guid="*">
+        <File Id="filtT85Fmp8v4HbvsEz4iV6B1lWEAg" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FParsecCS.dll" />
+      </Component>
+      <Component Id="cmpR7eAbhVSMXjuAtqw004qTjAjm_A" Guid="*">
+        <File Id="filxhupZizOdZjfNymLfZ7IJqJJTqo" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/FParsecCS.xml" />
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <ComponentGroup Id='JuniperStandardLib' Directory='JUNSTD'>
+      <Component Id="cmp_K06xa143WL.SYHVGOMPJ20ZQ04" Guid="*">
+          <File Id="filrvEVtIYh7fKDCdv3nLRqt.YHu.Q" KeyPath="yes" Name="Button.jun" Source="../../Juniper/Juniper/bin/release/junstd/Button.jun" />
+      </Component>
+      <Component Id="cmpcWm90V_jDTo.dAt5JdOCzbyZY0Q" Guid="*">
+          <File Id="filt8URM1S02WZ36W7AzcKJ2YUO6kY" KeyPath="yes" Name="Io.jun" Source="../../Juniper/Juniper/bin/release/junstd/Io.jun" />
+      </Component>
+      <Component Id="cmpjeF1wFEt4d7Q0SZ_TyLpmTjbZiA" Guid="*">
+          <File Id="fila1acBftorPrZxHLIJMclMKUSb7Y" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/List.jun" />
+      </Component>
+      <Component Id="cmpKhlqweAsb5gjMDFA1cL.4lrrhZE" Guid="*">
+          <File Id="filIuMmm2xhSqTm.RDuS.nKpdhOMwk" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/Math.jun" />
+      </Component>
+      <Component Id="cmpuMOCc_VnwBwQ1lZsWm9xnfRuAeg" Guid="*">
+          <File Id="filoWjkCSt0t_rYCoE1.JavbMzt01g" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/Maybe.jun" />
+      </Component>
+      <Component Id="cmpS02BKBcvdNOOnDBy6qNCBcsigIk" Guid="*">
+          <File Id="filMXM1IxwDUfUrKKTyOytHHQKiuws" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/Prelude.jun" />
+      </Component>
+      <Component Id="cmpUyNBQlTw8SqHagS_jWU0aAYS0gE" Guid="*">
+          <File Id="filG3baMbn76quzP0HrWCNmG0XSEBw" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/Signal.jun" />
+      </Component>
+      <Component Id="cmpmng3m3H3ToYR.um00fv62YHMM5s" Guid="*">
+          <File Id="fil.L1TiBfF5K9hEODFCMC0b0aShTM" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/Time.jun" />
+      </Component>
+      <Component Id="cmpQR88JBZ_ADHIYNIqCEEF0Jr5iBk" Guid="*">
+          <File Id="filbWOYAtdL3QPtELwYbQGkUYty7aQ" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/Vector.jun" />
+      </Component>
+      <Component Id="cmp.ug_0tBVN_dxxASauoIbWW...lg" Guid="*">
+          <File Id="filWinsQdawzg.DHLOxWiyk7GDeQXI" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/CharList.jun" />
+      </Component>
+      <Component Id="cmp42W91.R.P7FuGTJ1pvilvkqrzo0" Guid="*">
+          <File Id="filbI_YbHNBiWUa1CAEZ2JHuCfHiks" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/junstd/StringM.jun" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  
+  <Fragment>
+    <ComponentGroup Id="JuniperWrappers" Directory="WRAPPERS">
+      <Component Id="cmpIkka1cWcW_QgYzqosgupxEGFhzc" Guid="*">
+          <File Id="filBPo2eaoXMrdomSlxhGEPOC97elw" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/wrappers/AdafruitLSM303.jun" />
+      </Component>
+      <Component Id="cmpAbKuk1dkilTKHSQzNrFkigkLRJo" Guid="*">
+          <File Id="filPlMt7JU8.DbZP2.rxdDZgOBYpfg" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/wrappers/AdafruitLSM303Accelerometer.jun" />
+      </Component>
+      <Component Id="cmpNOD57awQezc.SeXyRjznwzvE4.8" Guid="*">
+          <File Id="filPzWP8MyiwZdxSE5BJP1txcl0Wr8" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/wrappers/AdafruitLSM303Magnetometer.jun" />
+      </Component>
+      <Component Id="cmpTBYDpifJeuf6_pf53y0c3k1zmvU" Guid="*">
+          <File Id="filCXqPwCfF3gfyOlRSCFXkViLqYj0" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/wrappers/Neopixel.jun" />
+      </Component>
+      <Component Id="AdafruitGPSComponent" Guid="*">
+          <File Id="AdafruitGPS" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/wrappers/AdafruitGPS.jun" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="JuniperExamples" Directory="EXAMPLES">
+      <Component Id="cmpb8Abl4mnFVXyI27iK2iycnaY3zk" Guid="*">
+          <File Id="filBFudVB2p0_gC2.oM1n9FlXj6vfk" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/examples/Blink.jun" />
+      </Component>
+      <Component Id="cmp_K9RMq9PQipS_luiz3k1VjzxZ6U" Guid="*">
+          <File Id="fil1.yAOu_ijoP4sW_yUqbcb6bos2I" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/examples/ButtonDebounce.jun" />
+      </Component>
+      <Component Id="cmpWpK2RcQXaU9.__njBbkFpDXVFrA" Guid="*">
+          <File Id="filVGETqe3jNGN2utPYeSGtEnTB3EM" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/examples/NeopixelRing.jun" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  
+  <Fragment>
+    <ComponentGroup Id="JuniperCppStd" Directory="CPPSTD">
+      <Component Id="cmpV3qEE3LZPo5Jr1mf7C92JdXYXQ8" Guid="*">
+          <File Id="filhI4oMoAdOFFM6KtLToSBzBrRR4w" KeyPath="yes" Source="../../Juniper/Juniper/bin/release/cppstd/juniper.hpp" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
