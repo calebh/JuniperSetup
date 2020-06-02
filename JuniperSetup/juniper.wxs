@@ -1,140 +1,217 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="TARGETDIR">
-            <Directory Id="dirmD9PC8YWe5WAHpyEAZEPbJGM37s" Name="release">
-                <Component Id="cmpofbO0g2opGgq2atVcIZ9y5w74XQ" Guid="571BDB9A-C0E6-4170-8002-D2DD0F0F1ABF">
-                    <File Id="filRsvkIvEV7stWk2GyGX1eezF4zWI" KeyPath="yes" Source="SourceDir\FParsec.dll" />
+            <Directory Id="dirA622272A3642906C114F843D2FDC5552" Name="release">
+                <Component Id="cmp1027F0CE540ADF6915F36DE01595867F" Guid="9A42E877-AFEA-4EBB-A146-577DAD5C8F60">
+                    <File Id="fil7431D2C6178D6B0070172BFDE00FE11D" KeyPath="yes" Source="SourceDir\FParsec.dll" />
                 </Component>
-                <Component Id="cmpT3TiURraujTyjliY8KIAVMBITus" Guid="331DA179-ACBC-424D-93C4-246448E2D7F3">
-                    <File Id="filGyrR3uo4ZxBK2plfWNi8CHwZpxc" KeyPath="yes" Source="SourceDir\FParsec.xml" />
+                <Component Id="cmpE30E7F9C00E3A26C27E81B55CB93AA9E" Guid="E5845DD4-26F4-4C90-AD41-AC2A479A7AE1">
+                    <File Id="filC54482B96E60AA2BA2C5EF2EF6EB22A4" KeyPath="yes" Source="SourceDir\FParsec.pdb" />
                 </Component>
-                <Component Id="cmpCDxEjWVtNbAsYxdIt8KDWkNbqoM" Guid="14C837EE-C47F-4BE2-B60E-A2DE15BC1FB6">
-                    <File Id="filtT85Fmp8v4HbvsEz4iV6B1lWEAg" KeyPath="yes" Source="SourceDir\FParsecCS.dll" />
+                <Component Id="cmp6BF4568EB6A03010C7BAB5B54CE0DDC7" Guid="C2260A5C-7C3C-4411-9BCD-3E8FD4D3CCB0">
+                    <File Id="fil690EED27222BC9DEBCC69BAEA7ED5BBD" KeyPath="yes" Source="SourceDir\FParsec.xml" />
                 </Component>
-                <Component Id="cmpR7eAbhVSMXjuAtqw004qTjAjm_A" Guid="6F16566B-0202-4B6B-A9CC-04363E3DF6AA">
-                    <File Id="filxhupZizOdZjfNymLfZ7IJqJJTqo" KeyPath="yes" Source="SourceDir\FParsecCS.xml" />
+                <Component Id="cmp112CBBAF1E13435BD08922B94CF58472" Guid="9CBEE223-84A8-4EB6-92E6-0F5FFB81284E">
+                    <File Id="filC33304EB1DA5EB2E423DF322ED660664" KeyPath="yes" Source="SourceDir\FParsecCS.dll" />
                 </Component>
-                <Component Id="cmpHz01JQ3oRmDSumDKtMJWBE3YGFM" Guid="79DC1774-0F2F-4D87-91D8-AA37B04A9538">
-                    <File Id="filJ_d4R6oH9W3iZ9cbR4HZVBqStbc" KeyPath="yes" Source="SourceDir\FSharp.Core.dll" />
+                <Component Id="cmpC32F467F627F0C01AA4938AD40EFDA60" Guid="92B38184-9662-4657-8FF8-AD52313675D3">
+                    <File Id="fil8BAE7B2FBCC1CC7901AA23761BE25A96" KeyPath="yes" Source="SourceDir\FParsecCS.pdb" />
                 </Component>
-                <Component Id="cmprdftxyJJqsJVWWPqX654dMNuOaQ" Guid="35BF8220-C137-4F70-8876-631163BFC5DB">
-                    <File Id="filDFnukQ.ZDv8c5UujCSdZdrvUIDM" KeyPath="yes" Source="SourceDir\FSharp.Core.xml" />
+                <Component Id="cmp0D08757452B1D4CA177BC72C0D8B9808" Guid="D9D32DC1-44C2-4C99-9710-C5DA6F1345BC">
+                    <File Id="fil1DB359EAB1BA1903ED20BBAA1D990483" KeyPath="yes" Source="SourceDir\FParsecCS.xml" />
                 </Component>
-                <Component Id="cmpN_oqIhm5BOudGjt9D35bxyoDbwg" Guid="32993928-634D-4C78-A2B7-9568D6371019">
-                    <File Id="fileWtIv4ZCp0cm4Vvi6sWHxeJvuP8" KeyPath="yes" Source="SourceDir\FSharpx.Core.dll" />
+                <Component Id="cmpC77A7A575E9465D701C522077448FF63" Guid="A11CE0AE-0876-4346-A6AC-0D41F4B817A7">
+                    <File Id="filBD0C02CDA5D612566F3C471F9AF2C0C9" KeyPath="yes" Source="SourceDir\FSharp.Core.dll" />
                 </Component>
-                <Component Id="cmpmQcxlwDIC9iZ0lEEpmkCZ7.D6aA" Guid="589BEDD9-7CA6-4189-9BFB-893C76D1B2FE">
-                    <File Id="filVDlQM4RQ692GXgxaMc0r3ILO6Ns" KeyPath="yes" Source="SourceDir\FSharpx.Core.pdb" />
+                <Component Id="cmp81229E989CAA41ED00BFF7DD37D2083B" Guid="C032C1B2-4604-4024-978F-0BD14187A6D1">
+                    <File Id="fil8FAA48842E98D71FA862CCEF2705FBC4" KeyPath="yes" Source="SourceDir\FSharp.Core.xml" />
                 </Component>
-                <Component Id="cmp.qKtASRcAlCySo.SHMNC_WGtQ34" Guid="D7FA3F22-DDB8-421E-8B74-65AFD699F9E4">
-                    <File Id="filk1St9CcndlSqRYpTShJLBKw6B1w" KeyPath="yes" Source="SourceDir\FSharpx.Core.xml" />
+                <Component Id="cmp7B83603C7785AAC499A547D0D83A036D" Guid="0AF1D773-FECB-453F-A3ED-50BF7D12DDC2">
+                    <File Id="filF414B157757E9AE4EC3D31108A842E55" KeyPath="yes" Source="SourceDir\FSharpx.Core.dll" />
                 </Component>
-                <Component Id="cmpIM8cHPIV_i83INGpe_Oj1srP6hI" Guid="17C2A5EA-423A-47EC-BBF6-433EB950DB3D">
-                    <File Id="filZwLEXULt4wqMQExcY.uUm5TVtGE" KeyPath="yes" Source="SourceDir\juniper" />
+                <Component Id="cmp34EC6AAEF31AA9684B20B6682FA2EF72" Guid="88BD0A50-7AB3-4202-9C5A-961C048600EE">
+                    <File Id="fil582FAF0D39697BB0BB97A3A4E38DDA72" KeyPath="yes" Source="SourceDir\FSharpx.Core.pdb" />
                 </Component>
-                <Component Id="cmp_S5V17JdL4wGuIVJ0KyWoqz53xQ" Guid="A998C787-831C-45E2-8D5D-009F39F44B3A">
-                    <File Id="filmD3WXt7yVLqbDbO7ZeXOlJw4k3E" KeyPath="yes" Source="SourceDir\Juniper.exe" />
+                <Component Id="cmp6D850BB7B12FFBC7ABF2618B508815D4" Guid="F1B9C760-5BAC-4CBD-971B-BF1A1DF07B3F">
+                    <File Id="fil7EB36C10534BFF61497C90A4471F4BB6" KeyPath="yes" Source="SourceDir\FSharpx.Core.xml" />
                 </Component>
-                <Component Id="cmp8qCdqUwKgCsD.VxazF.OONKeAu0" Guid="DCAEDE91-939D-4574-AA73-E67EBEAC157B">
-                    <File Id="filCUeMgea5Pv_6xfer9DjyCelyYoo" KeyPath="yes" Source="SourceDir\Juniper.exe.config" />
+                <Component Id="cmpB74AD5D89D58CA4F34778A364CD293E9" Guid="9E9F3F9D-01B8-44A8-AF43-ED94E98B918F">
+                    <File Id="fil709848AF7650EE977D9B98CF34B2F3B2" KeyPath="yes" Source="SourceDir\juniper" />
                 </Component>
-                <Component Id="cmpP1Pwk8aJUgzktZP0pVvBLQGQGCo" Guid="8C428A0F-36B0-4643-B48C-108EC9CF65AB">
-                    <File Id="filc_sdVPIhv3n6ByVqb5OXwaqcGY4" KeyPath="yes" Source="SourceDir\Juniper.pdb" />
+                <Component Id="cmpC43E13DD8A45D7ED95337B57CE7BC9B4" Guid="076A7F8A-89EB-4700-BCEE-B509EF096183">
+                    <File Id="fil173E0EDDC78644F32955C31D859DBAB2" KeyPath="yes" Source="SourceDir\Juniper.exe" />
                 </Component>
-                <Component Id="cmpbSpfaf6v85Iv.OoE_P2Ymek2Ens" Guid="23881DA9-0DFD-4B9E-9618-8C68F2B91DD1">
-                    <File Id="fill.GexlsRRxT5P2DUC3T5dQYDj9I" KeyPath="yes" Source="SourceDir\Juniper.XML" />
+                <Component Id="cmpB40A09D490B50ACAB23E276D872A130C" Guid="D0325535-2FA5-4EE5-A0C7-625EC116FCED">
+                    <File Id="fil2BC32399AA2A890971C4A63BE0362C69" KeyPath="yes" Source="SourceDir\Juniper.exe.config" />
                 </Component>
-                <Component Id="cmpATIWBRONRIwreIxlo3p0.4.cft4" Guid="E1DF3A51-4FBE-4750-9E7C-FCDB738E45C8">
-                    <File Id="filnbcbVO2N8UGem5a4U4yxdRHqOCw" KeyPath="yes" Source="SourceDir\QuickGraph.Data.dll" />
+                <Component Id="cmp0A2F398885AF22D2B47A9AFAFE374490" Guid="F5DD7741-B447-4854-B1ED-FD88C43E12FA">
+                    <File Id="filFB3E3F3C3F0FC465BF1790F44EF7A2EE" KeyPath="yes" Source="SourceDir\Juniper.pdb" />
                 </Component>
-                <Component Id="cmp.Ys42L8_9gVo9dwDzx4FFTDz_uQ" Guid="54E17E3B-1CB2-4F6B-A203-A8CDFAE32F4C">
-                    <File Id="fildhASFXKkqzUphuxUCVBMhJHpl2I" KeyPath="yes" Source="SourceDir\QuickGraph.Data.xml" />
+                <Component Id="cmp9BFF8C02357CDAD63735AA8DA69649EA" Guid="E8418574-4BD7-4862-A227-6D5D290AC073">
+                    <File Id="filC501E95E2DE6C32F832A8B6C2079EC90" KeyPath="yes" Source="SourceDir\Juniper.XML" />
                 </Component>
-                <Component Id="cmpSz8Ec7GCtLzknk.qtCzpVpwgX14" Guid="0C20620A-46EE-4ABF-9449-78D76C9ABEC2">
-                    <File Id="fil427e5ASXYKpE5pdiepLRk9n7hq8" KeyPath="yes" Source="SourceDir\QuickGraph.dll" />
+                <Component Id="cmp0981059715750C5820D7B4E22FCAAC50" Guid="5F701436-FA7A-405E-8646-1725F04495A4">
+                    <File Id="fil32BBE685CA80ACDF987BA4E7547E14BC" KeyPath="yes" Source="SourceDir\QuickGraph.Data.dll" />
                 </Component>
-                <Component Id="cmpBEKxwtbLgQ950yxPBD_IINqJI6I" Guid="390B5426-5FE1-4C41-BB3D-24EA99D30E88">
-                    <File Id="filBjLCFzHScwmv_xXc5vkKHyzRKFI" KeyPath="yes" Source="SourceDir\QuickGraph.Graphviz.dll" />
+                <Component Id="cmpC780CBE44B36F426FDB47096B18B8C33" Guid="1872D48C-98F1-4AD7-814F-44BC18AEE931">
+                    <File Id="filAC302B6AB4585E9C3ABAAD8A516E0B05" KeyPath="yes" Source="SourceDir\QuickGraph.Data.xml" />
                 </Component>
-                <Component Id="cmpkSlhVavDhXZ5cawIe5iI3PRDx28" Guid="6EC0E68E-E245-41E3-B44C-1FF937DECC83">
-                    <File Id="filXX_0UDTsV3ltvB7WfTkPVwSI7i0" KeyPath="yes" Source="SourceDir\QuickGraph.Graphviz.xml" />
+                <Component Id="cmpDCEE296BBFFD5D56BBC0B4D2543ABDB6" Guid="F6BB47FF-05F0-4A89-B38A-8D514208105C">
+                    <File Id="filB6959B264FD7DBB87B1373E97C219FAD" KeyPath="yes" Source="SourceDir\QuickGraph.dll" />
                 </Component>
-                <Component Id="cmp73oNsNm3NahpN9X.5X_I.GGAjNc" Guid="1172EBD6-0826-4FFE-A1C5-67FCC0A99C4C">
-                    <File Id="fil08WXC0pSKWHzqv.ZI4SzO4d6UfI" KeyPath="yes" Source="SourceDir\QuickGraph.Serialization.dll" />
+                <Component Id="cmp669E103799ACEA35377B0AD6E44C6A2E" Guid="4E353199-3251-4A4B-B48E-82B758BFBBC8">
+                    <File Id="fil965CC3DF4C492A3FF17D8E00733F3026" KeyPath="yes" Source="SourceDir\QuickGraph.Graphviz.dll" />
                 </Component>
-                <Component Id="cmp.vEsFL4SYFwPlq4dAwDbhj2laqY" Guid="BAC76DF9-C549-4DAF-AC5F-B2F40874F280">
-                    <File Id="fil6Cvv2DaTpwuO359CQn1UP5LECHY" KeyPath="yes" Source="SourceDir\QuickGraph.Serialization.xml" />
+                <Component Id="cmpE8FA7C3FF84CABFA50BC61620F3FCE87" Guid="6AD78A18-0366-4CBA-89F0-2A2024EABFFB">
+                    <File Id="fil36656AF4D21B0C0257F2CFDE9A44AA36" KeyPath="yes" Source="SourceDir\QuickGraph.Graphviz.xml" />
                 </Component>
-                <Component Id="cmpUSqH.chrDDJkvUPX5UpmvpH7YcY" Guid="9623E5CE-72B1-4615-B5AD-BFA88FAB3550">
-                    <File Id="filJjoNNh3H51ydRaEvy.Sqf0uO8gM" KeyPath="yes" Source="SourceDir\QuickGraph.xml" />
+                <Component Id="cmp14FEE9E496036C3F5274FE739E1DA128" Guid="7D840BAB-0B31-4D48-B9B1-78C1969FD5BD">
+                    <File Id="fil61E823D3E7FC9BEAEF59A0E32BE01E36" KeyPath="yes" Source="SourceDir\QuickGraph.Serialization.dll" />
                 </Component>
-                <Directory Id="dirXSKk9XoZN6VxNJ0k0y67KKmqjac" Name="cppstd">
-                    <Component Id="cmpG45PhKTLgSAKf6P8WFv1sDTmieM" Guid="8C7740EA-7E12-475F-AFD1-096EA1F0F81D">
-                        <File Id="fildu6eN5Lkhg1uAkpxE2PDh8_KeJ4" KeyPath="yes" Source="SourceDir\cppstd\juniper.hpp" />
+                <Component Id="cmp6F72E9DAC21649EB1EBE449D1068A248" Guid="51DF9041-3A1D-4C2E-802B-8C33B9DACC6B">
+                    <File Id="fil796658736D4FD5C2E79727C8EC7CD992" KeyPath="yes" Source="SourceDir\QuickGraph.Serialization.xml" />
+                </Component>
+                <Component Id="cmp58CB9E2C7D4FE361D548B3266EE701C9" Guid="C85EF44D-11AD-447A-89D9-4EA65C5AE91A">
+                    <File Id="fil79E8897C43066DB5DDDCA54DF41209FC" KeyPath="yes" Source="SourceDir\QuickGraph.xml" />
+                </Component>
+                <Component Id="cmp7E8CAD5C24ED62FD43376C2EEEF66F1F" Guid="617FD816-F235-46DA-8A5F-5B9409251A04">
+                    <File Id="fil7B72271133BF78267008DE2AB18828D3" KeyPath="yes" Source="SourceDir\System.ValueTuple.dll" />
+                </Component>
+                <Component Id="cmp19FDC441E02FBCC58968AF5306214431" Guid="CA11208E-CE95-447B-96D5-0B44B79288B2">
+                    <File Id="fil88060908EEC979C0AB50FCE2AB7A270C" KeyPath="yes" Source="SourceDir\System.ValueTuple.xml" />
+                </Component>
+                <Directory Id="dir97C707B2CF372A810AD88C89EC2942CC" Name="cppstd">
+                    <Component Id="cmpD484CAD2828D8429BEA1B8F44CD6F84A" Guid="EF2D4EE1-E7FD-4651-A927-B337A8D1BA19">
+                        <File Id="fil5CC5D9016EEDB9EC08B159ACB2EEB0DC" KeyPath="yes" Source="SourceDir\cppstd\juniper.hpp" />
                     </Component>
                 </Directory>
-                <Directory Id="dirJggn0rwSoZUbeKmu5LzoymjRTWo" Name="examples">
-                    <Component Id="cmp8REKjQ0QYLUIc4zkJESMfbDegPA" Guid="867DD8B9-482D-4248-A0A3-056A59BBA5F9">
-                        <File Id="fil2YBPquKcpm8LvfoHswPMAPy6w6E" KeyPath="yes" Source="SourceDir\examples\Blink.jun" />
-                    </Component>
-                    <Component Id="cmplNfAS6IZQstyqchjePtVxr9k2lA" Guid="92881283-1F6D-4E76-BF3F-67CA0FC4DC1B">
-                        <File Id="filxFSO0xPilgzDxDIaR1koLNxcDWg" KeyPath="yes" Source="SourceDir\examples\ButtonDebounce.jun" />
-                    </Component>
-                    <Component Id="cmpKZf8CoDjzh4jq3wKPjGpjfhydEI" Guid="6FA4046B-4B35-4FD6-983B-3DE53C7E8138">
-                        <File Id="fil6mWaRR35wd_f1G1b3t0i4nlfeCw" KeyPath="yes" Source="SourceDir\examples\NeopixelRing.jun" />
+                <Directory Id="dir44A5D4941F97CF758214C7F933592FAB" Name="cs">
+                    <Component Id="cmp9B5B760B8A9F38C6FA26245A50AADD41" Guid="A0FB3371-5E1D-436A-B243-E03594B3AAC9">
+                        <File Id="filB4EC518732D699715741BDD5FF7C1EFE" KeyPath="yes" Source="SourceDir\cs\FSharp.Core.resources.dll" />
                     </Component>
                 </Directory>
-                <Directory Id="dirA1zURJFleLbVb6OwxllrdshMJ9M" Name="junstd">
-                    <Component Id="cmpzsTixSqSbvydqH8DHAooDN697xk" Guid="5EA3CAFF-CCE6-4E2D-951B-20272B6B8127">
-                        <File Id="fil.HAztyNiBS6ZIujhoiv08VS2424" KeyPath="yes" Source="SourceDir\junstd\Button.jun" />
-                    </Component>
-                    <Component Id="cmp.ug_0tBVN_dxxASauoIbWW...lg" Guid="3AC901C1-A9DF-4E5E-A17B-79BE315F4BE6">
-                        <File Id="filWinsQdawzg.DHLOxWiyk7GDeQXI" KeyPath="yes" Source="SourceDir\junstd\CharList.jun" />
-                    </Component>
-                    <Component Id="cmpXXfS2tPra5YreLLtnk3eJEl4EPU" Guid="6F6C02A9-2D0B-4B91-934E-A864C33CEEDC">
-                        <File Id="filHdb2dTDwOEtxVXaOlnL7Z1Ez6iE" KeyPath="yes" Source="SourceDir\junstd\Io.jun" />
-                    </Component>
-                    <Component Id="cmpzwU_HIEmooYBDlp1mXJPEt9i6HU" Guid="95C2D117-FEF4-49AE-B452-676BB3EF8C7D">
-                        <File Id="fil.CD2zt6Tvsd0l1ybxKLfT1Ys8hE" KeyPath="yes" Source="SourceDir\junstd\List.jun" />
-                    </Component>
-                    <Component Id="cmpRfoRECli9.BuAbMu0Z71zLyJrE4" Guid="6231F086-896E-41CC-BC96-365EAA94B2F8">
-                        <File Id="fil7S7VcE9VwtLFYaOJq.8D81ckKkk" KeyPath="yes" Source="SourceDir\junstd\Math.jun" />
-                    </Component>
-                    <Component Id="cmpcSg1oOJQ7txUjphePgSvJA3jz_s" Guid="6ACBFC99-727F-45AE-BF0B-64596A820D3B">
-                        <File Id="fil2PB8QDy9hSysjJUUO50vN0C5TgE" KeyPath="yes" Source="SourceDir\junstd\Maybe.jun" />
-                    </Component>
-                    <Component Id="cmpC1yejbWkRkmQT1PlIBbDaSj1x.0" Guid="31A3B05A-D0F4-494C-8C64-A7E73926B989">
-                        <File Id="filOTFfaUYlHCcu2U0Ftm03JdYwia4" KeyPath="yes" Source="SourceDir\junstd\Prelude.jun" />
-                    </Component>
-                    <Component Id="cmpTrOeAz_S3NCUhyM75gF.CWSd6RU" Guid="28027AE6-B4C2-4E93-9955-701CBF0FF789">
-                        <File Id="filKZ2PGlHZSH16ugrTYj.4gLeLVc4" KeyPath="yes" Source="SourceDir\junstd\Signal.jun" />
-                    </Component>
-                    <Component Id="cmp42W91.R.P7FuGTJ1pvilvkqrzo0" Guid="75AA4267-AD8A-42D7-AE70-970A9FEB1DFB">
-                        <File Id="filbI_YbHNBiWUa1CAEZ2JHuCfHiks" KeyPath="yes" Source="SourceDir\junstd\StringM.jun" />
-                    </Component>
-                    <Component Id="cmpYCZ8vQAhua6WwrLIglVV7G1FCYU" Guid="762DC77D-36FB-421D-B84A-ADE4E665E020">
-                        <File Id="filsrvagZURG6U3xE1XFJisIpuSrrA" KeyPath="yes" Source="SourceDir\junstd\Time.jun" />
-                    </Component>
-                    <Component Id="cmpQvOzNkyzFrFuOGGCorQWP6UcexM" Guid="069130D6-5184-4B33-8777-E57B98853CCC">
-                        <File Id="filjnAjGfqMwEUk10b79EgUv.jmYMQ" KeyPath="yes" Source="SourceDir\junstd\Vector.jun" />
+                <Directory Id="dirD157146D7B2E98D168023A61B47EF144" Name="de">
+                    <Component Id="cmp0333B649BD5869D1A7CB96DD76D8FFDE" Guid="68202339-001A-4BE4-8DFA-4FE658B1FB56">
+                        <File Id="fil408248135A33A718045EFD17067BF0BE" KeyPath="yes" Source="SourceDir\de\FSharp.Core.resources.dll" />
                     </Component>
                 </Directory>
-                <Directory Id="diro8GqLSvnfeIHP2MeCpHnmOwWL_k" Name="wrappers">
-                    <Component Id="cmpYTTZUTJ7QyUskwpYfpOSr7HJz5k" Guid="1E2E8B78-CE40-47D3-975A-ACCE25479C6D">
-                        <File Id="fil3YaR9nihYQaa8L1YmF7IOL.wQ6w" KeyPath="yes" Source="SourceDir\wrappers\AdafruitGPS.jun" />
+                <Directory Id="dir9630248E8E10CB4676A7CC64B388E3BD" Name="es">
+                    <Component Id="cmpD75286F2BC8A98814171B3FCEF402144" Guid="9D7B726F-4696-4931-A05C-BC295F97D5DF">
+                        <File Id="fil2A7DD6F47D147B69C8F0E74B1F233953" KeyPath="yes" Source="SourceDir\es\FSharp.Core.resources.dll" />
                     </Component>
-                    <Component Id="cmpc_6Np_D145Rj0G.dQ2pAzLbGBjE" Guid="E740FDBD-DB29-428F-8280-164826B2260E">
-                        <File Id="filSWoVhnf4kd8x3XLc8iIP3b_2aTM" KeyPath="yes" Source="SourceDir\wrappers\AdafruitLSM303.jun" />
+                </Directory>
+                <Directory Id="dir5CAB923250368EB119283D084C1DD2DE" Name="examples">
+                    <Component Id="cmpE3284CFF13CF614F0E6B55107A4CFB7E" Guid="2561DFD3-2E04-48AD-8118-37D4B28E552C">
+                        <File Id="filD8D9868D9FB94F99B5A34DB99518B4AA" KeyPath="yes" Source="SourceDir\examples\Blink.jun" />
                     </Component>
-                    <Component Id="cmpTr8nKNgmDsIeUahy4Fxw8AGu4mU" Guid="D498950B-1300-4938-A757-A54BDF8CFA65">
-                        <File Id="filIbRqV5Z.m8DjLfG2NRtevMzfnwE" KeyPath="yes" Source="SourceDir\wrappers\AdafruitLSM303Accelerometer.jun" />
+                    <Component Id="cmp3E3E5CB27B0156EF46AF562D90B96682" Guid="2A61E65F-798A-449C-B0B0-816DCAEF143E">
+                        <File Id="fil69779F1E90CF57736B4AE7063D9E6B05" KeyPath="yes" Source="SourceDir\examples\ButtonDebounce.jun" />
                     </Component>
-                    <Component Id="cmpiJQc4qPWzlYmDeyuasu.GeAEC8c" Guid="0AF1A256-D80E-4423-9691-BFD8A46CAE9C">
-                        <File Id="fil1bDPgvlUKC0h0oFPzNrhSf2Fk7A" KeyPath="yes" Source="SourceDir\wrappers\AdafruitLSM303Magnetometer.jun" />
+                    <Component Id="cmp62567F95F591AE2732574FAC4C17C780" Guid="622CAA5C-1310-47FB-8EE1-9ACBB0D6D76C">
+                        <File Id="fil8CEE91F841C24E571E2685C13742BED3" KeyPath="yes" Source="SourceDir\examples\NeopixelRing.jun" />
                     </Component>
-                    <Component Id="cmpctv5YrUztgpYzT3GOU3E.pjSihA" Guid="9891FA19-E839-449E-A621-456AA66C7A4E">
-                        <File Id="filTyvdQeiRDogQp_7jsJr0UIAtogQ" KeyPath="yes" Source="SourceDir\wrappers\Neopixel.jun" />
+                </Directory>
+                <Directory Id="dirD93755196F66C55A2B8811E6046B0791" Name="fr">
+                    <Component Id="cmp4586669D56AF8CDF6CB073F9835C44CB" Guid="089B576B-2783-4C6B-93D5-30289050D755">
+                        <File Id="filBBD545B5EFA35CB44255AFA26F5C691F" KeyPath="yes" Source="SourceDir\fr\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir62FD175FCB7C05E2350DF634020ECA53" Name="it">
+                    <Component Id="cmpB5085A68470BAE32D4A0C1617894A33B" Guid="7C9F4875-849D-4334-A6BA-27C55793F745">
+                        <File Id="fil438FB5776582FE9AF4122AF657EA9619" KeyPath="yes" Source="SourceDir\it\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir2E3068F4F3A94B4EBF3757AFCC68F0A5" Name="ja">
+                    <Component Id="cmpFF882CCEFF44BCA7BEB1D23FB09449D3" Guid="64D66C07-35D8-44F6-8FC5-08D5499B8570">
+                        <File Id="filB322B253F33902285E8924932E665978" KeyPath="yes" Source="SourceDir\ja\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dirD6D264A6027F400FDBD35D6DB3123F22" Name="junstd">
+                    <Component Id="cmp9ED875863732D740368CBC63FE5B2E15" Guid="F9913612-6464-45F0-9BDC-803572A079FD">
+                        <File Id="filFA410233BC55EF54A7FF5085C638C30F" KeyPath="yes" Source="SourceDir\junstd\Button.jun" />
+                    </Component>
+                    <Component Id="cmp234343C00A9F1C4CCD07093C4063D73E" Guid="62560102-AE08-44F5-A7D5-590F01AF4E15">
+                        <File Id="filA0935FF05DC1DAABA44E22C0AAEE8859" KeyPath="yes" Source="SourceDir\junstd\CharList.jun" />
+                    </Component>
+                    <Component Id="cmpF87EDB4D925F8B974AA9DCAEB7FC61A2" Guid="858E0305-EBE9-473C-ABD8-D3F4633A03AF">
+                        <File Id="filD696FDE9C86469C3DE98CB07150C3495" KeyPath="yes" Source="SourceDir\junstd\Io.jun" />
+                    </Component>
+                    <Component Id="cmp2CB8E2BFF0744B09B3B951733349F9C2" Guid="DBA8F11B-1943-4A56-8CE4-F245C9CF7BB2">
+                        <File Id="filA07A62374EF08F4CDDD395A50F1CA2DE" KeyPath="yes" Source="SourceDir\junstd\List.jun" />
+                    </Component>
+                    <Component Id="cmp64972991B345C6FDD86B55778417A15F" Guid="10292351-5B75-4CDE-A32F-A083872B2675">
+                        <File Id="fil8525710A2E1282705F6B4310394D6B51" KeyPath="yes" Source="SourceDir\junstd\Math.jun" />
+                    </Component>
+                    <Component Id="cmp57D2FE9222732BF5583EEF79EBB50872" Guid="879F5EF7-25DD-4AF0-97EA-A6EB0CB73B70">
+                        <File Id="filFABCDE14C23489F04AA9B464D3E56567" KeyPath="yes" Source="SourceDir\junstd\Maybe.jun" />
+                    </Component>
+                    <Component Id="cmp338999AD74DB1DDEEE46BE265ED4E6C0" Guid="A33BDB45-FF2D-40CF-A8EB-6E2966854523">
+                        <File Id="filE35AF486D4966C1AD74924455E37ED8B" KeyPath="yes" Source="SourceDir\junstd\Prelude.jun" />
+                    </Component>
+                    <Component Id="cmpFB42324C68B09CB64EBF65297D398828" Guid="0D90D4DC-C790-4A87-95F7-B2E40E32AE19">
+                        <File Id="fil2A90C0F154E3832860E7FFFA5CEE7894" KeyPath="yes" Source="SourceDir\junstd\Signal.jun" />
+                    </Component>
+                    <Component Id="cmp82B1E8F70DC14C18C90A1DB454907E20" Guid="2399DDDC-D7E1-451C-8211-B8BF4395D7EF">
+                        <File Id="fil86FD8B12509DA6F1D309519C53511499" KeyPath="yes" Source="SourceDir\junstd\StringM.jun" />
+                    </Component>
+                    <Component Id="cmpA55A051605375B3FCBEB599DE9B72FDF" Guid="B45348D7-B6BF-4D4B-B48D-C70B46FC3BE0">
+                        <File Id="fil5A49D6E2A7A1CC156E5F239991BEA1F0" KeyPath="yes" Source="SourceDir\junstd\Time.jun" />
+                    </Component>
+                    <Component Id="cmp2427C1853362F47C86C4E769756AC716" Guid="762C4ACC-CABA-4DF6-9109-1BA619588E18">
+                        <File Id="fil2FA63E90EF11AD644272363E5D316D53" KeyPath="yes" Source="SourceDir\junstd\Vector.jun" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir20711B764E657FBE53ADAD080688994F" Name="ko">
+                    <Component Id="cmp9F87DE51AD36445360579AEE997DD521" Guid="2F1DF3CB-B6A6-47DD-A3F9-C18885207F63">
+                        <File Id="fil926BE9D9C3145A541C0E1EC9B55A180C" KeyPath="yes" Source="SourceDir\ko\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir8A8407AF640A1ABB2EE08652BCA44D39" Name="pl">
+                    <Component Id="cmpB5D6BBEE07890D3C2A67AC4C7C7CBD95" Guid="83BF88AF-890B-4D14-8DFD-10854F32B990">
+                        <File Id="fil2D9885B4BEC5E8944006C5FF4DC42C06" KeyPath="yes" Source="SourceDir\pl\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir54DE92FBBD66BD269DC69EE3223F9E98" Name="pt-BR">
+                    <Component Id="cmpBF7A3F2276633F5047829F07C38EE87E" Guid="1CEDC031-305C-4A9B-AB8C-43242C72D9C3">
+                        <File Id="fil390D01490DB75F89901B5D67496D753A" KeyPath="yes" Source="SourceDir\pt-BR\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir9754CA6E2B83C27E94A2252989EB10B4" Name="ru">
+                    <Component Id="cmp70BA7712A1D0643AA2A1AFE770151821" Guid="6DEC2264-ABFD-49D6-AC4C-4C1CAF4D434D">
+                        <File Id="filCBB1CEBB506257E594376D41C2E475E5" KeyPath="yes" Source="SourceDir\ru\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dirEB320FFC2623784742F2A1155DB80B6D" Name="tr">
+                    <Component Id="cmpDF7BE1A18CA0E7182D308F725EC5DA84" Guid="3F32EEA0-CFBC-40E2-B7CA-B683976E25A8">
+                        <File Id="filB88065EC7E8D683084BAC36D34275DB6" KeyPath="yes" Source="SourceDir\tr\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir06FE42698F58D80016CD207535F0B4D3" Name="wrappers">
+                    <Component Id="cmpC33029DA85356A3618D2300769E843EC" Guid="0EABD83E-A133-4FA0-A939-D453C6374BE4">
+                        <File Id="fil606A6CE5D241BC8FEEA025C0B116A327" KeyPath="yes" Source="SourceDir\wrappers\AdafruitGPS.jun" />
+                    </Component>
+                    <Component Id="cmpA701527A229CF3E156E08DE8040400D7" Guid="DB8A9146-53CE-4EF9-BB6E-00BC38AEE3C5">
+                        <File Id="fil68DC8CCCAD9B812F2171F9EDEE5BBCCB" KeyPath="yes" Source="SourceDir\wrappers\AdafruitLSM303.jun" />
+                    </Component>
+                    <Component Id="cmpBEDEC70BDBC3DCCB599D902090FF465E" Guid="CE8BD78C-B9C4-469C-9589-CD58BAE5163C">
+                        <File Id="filAE3DB8F85E9F5CF97D19BD41FE4CDFE0" KeyPath="yes" Source="SourceDir\wrappers\AdafruitLSM303Accelerometer.jun" />
+                    </Component>
+                    <Component Id="cmp8B0DD34F180A4AFF113A881B7B1FF22C" Guid="E49A939E-D612-4353-AAFF-CB4E1A2F69FB">
+                        <File Id="fil729FB60BBD5E9A9A3FEAA1C553937698" KeyPath="yes" Source="SourceDir\wrappers\AdafruitLSM303Magnetometer.jun" />
+                    </Component>
+                    <Component Id="cmp520AD00A80F787393A0E98DAB2F04BE6" Guid="BBCE45D5-9F49-4D03-9AE6-C94B3D548F5D">
+                        <File Id="fil3AB0273DD9C3361659CCB0558D36DE25" KeyPath="yes" Source="SourceDir\wrappers\Neopixel.jun" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir7BB2C5CF53262060FCDAFBA87040451F" Name="zh-Hans">
+                    <Component Id="cmpC429B5B12223927DD54F3E541D49F6F1" Guid="5499553F-3110-46BB-BE19-39208E94636C">
+                        <File Id="filF25E66F28F2C63C65509168F19E8A827" KeyPath="yes" Source="SourceDir\zh-Hans\FSharp.Core.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir98DEE4F9006E34337470E4E51BDE00F6" Name="zh-Hant">
+                    <Component Id="cmp479DCD841408C1919DC562DEFC00D8A6" Guid="84839E44-7472-45E2-9078-044B0A096B35">
+                        <File Id="fil5D6DE57D8276A3C4E3607FF6C9E2984D" KeyPath="yes" Source="SourceDir\zh-Hant\FSharp.Core.resources.dll" />
                     </Component>
                 </Directory>
             </Directory>
