@@ -1,1 +1,1 @@
-"C:\Program Files (x86)\WiX Toolset v3.11\bin\heat.exe" dir "..\..\Juniper\Juniper\bin\release" -gg -g1 -sfrag -sreg -out juniper.wxs
+"C:\Program Files (x86)\WiX Toolset v3.11\bin\heat.exe" dir "C:\Users\caleb\Documents\juniperproject\dotnetcore\Juniper\Juniper\bin\Release\net5.0\win-x64\publish" -gg -g1 -sfrag -sreg -out juniper.wxs
