@@ -1,11 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Juniper" Language="1033" Version="3.1.0.0" Manufacturer="Juniper Project" UpgradeCode="E635FEAF-DD23-44C2-B27A-5D7A7AF3A2DD">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+	<Package Name="Juniper" Language="1033" Version="4.0.0.0" Manufacturer="Juniper Project" UpgradeCode="E635FEAF-DD23-44C2-B27A-5D7A7AF3A2DD" InstallerVersion="200">
+
+    <UI Id="UserInterface">
+      <Property Id="WIXUI_INSTALLDIR" Value="TARGETDIR" />
+      <Property Id="WixUI_Mode" Value="Custom" />
+
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="9" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Title"  FaceName="Tahoma" Size="9" Bold="yes" />
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="UserExit" />
+
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999"></Publish>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="EndDialog" Value="Return" Order="2"></Publish>
+
+    </UI>
+    <UIRef Id="WixUI_Common" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
-
     <Feature Id="ProductFeature" Title="Juniper" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="JuniperStandardLib" />
@@ -29,11 +48,10 @@
         <Environment Id="PATH" Name="PATH" Value="[INSTALLFOLDER]" Permanent="no" Part="last" Action="set" System="yes" />
       </Component>
     </Feature>
-	</Product>
+	</Package>
 
   <Fragment>
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFiles64Folder">
+      <StandardDirectory Id="ProgramFiles64Folder">
         <Directory Id="INSTALLFOLDER" Name="Juniper">
           <Directory Id="JUNSTD" Name="junstd" />
           <Directory Id="WRAPPERS" Name="wrappers" />
@@ -53,894 +71,779 @@
           <Directory Id="ZHHANS" Name="zh-Hans" />
           <Directory Id="ZHHANT" Name="zh-Hant" />
         </Directory>
-      </Directory>
-    </Directory>
-  </Fragment>
+      </StandardDirectory>
+    </Fragment>
   
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-      <Component Id="cmp69D45DFE32DFEDEF39078DE030D02799" Guid="*">
-        <File Id="fil68AE144837265D011CB73059BB2209CC" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-console-l1-1-0.dll" />
+      <Component Id="cmp0A37B1B194A4DA4806D0A1FFFAEF7D5B">
+        <File Id="fil2FA40DA4EA9D00E6C7D6B08520F594EB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/clretwrc.dll" />
       </Component>
-      <Component Id="cmpDE3D064C76052FC27CDFDF3F22F0F75A" Guid="*">
-        <File Id="fil2169708EB9CFA5068FA55ED03CD05A5B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-console-l1-2-0.dll" />
+      <Component Id="cmpCEF4980F3C19642E406E8F45214008E4">
+        <File Id="fil46215BDDE901A62101E966E97157D2D0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/clrgc.dll" />
       </Component>
-      <Component Id="cmp451C94A8C8C091D9DFA2302F73EA90C1" Guid="*">
-        <File Id="fil05403AE7C7E22D3FB4461B2399DBAEDD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-datetime-l1-1-0.dll" />
+      <Component Id="cmp0DB4A6B19C4FA9BE5270D0E16D731600">
+        <File Id="filA77A46EEF56444A11EBC72C31B29F1C2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/clrjit.dll" />
       </Component>
-      <Component Id="cmp04F4CFE167E38DD02CE588558FFC63B9" Guid="*">
-        <File Id="fil6C98CAD5C38EAC01E4952FB29E30ABE6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-debug-l1-1-0.dll" />
+      <Component Id="cmpD9AD4EEDCA85AE476EC3E437A82809A1">
+        <File Id="fil293451F912AC85573B968EB0C62B4A86" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/coreclr.dll" />
       </Component>
-      <Component Id="cmpF9143B466822F7FC2E3869849FCABA8C" Guid="*">
-        <File Id="filF3C41B3DA55127667E81EEE01B55B2D4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-errorhandling-l1-1-0.dll" />
+      <Component Id="cmpE57BC9C2022A22C94DFC193B551F680A">
+        <File Id="fil16C74DD193DE282409B9089AE9CB73C0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/createdump.exe" />
       </Component>
-      <Component Id="cmp078253263BC7090ED836E100B4370C3C" Guid="*">
-        <File Id="filBEA21093E5EAA946A4C21A62942DFE05" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-file-l1-1-0.dll" />
+      <Component Id="cmp2F3BFF10D76973AB2E4294109DE5DAB8">
+        <File Id="filFFCAE94FC2CE7CADF8B39474E87BE69D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/FParsec.dll" />
       </Component>
-      <Component Id="cmp7B6E05C931DF665E55B602974DADDCD9" Guid="*">
-        <File Id="filD6663AE61B8FB9717C7931209CA16388" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-file-l1-2-0.dll" />
+      <Component Id="cmp8E2493EA4E63B30A61B89BF6D16DB2B2">
+        <File Id="filFB2C16899ACC8A1EB71D5A90DC341FDA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/FParsecCS.dll" />
       </Component>
-      <Component Id="cmp8B61A8A29099062F393152F0F14A405E" Guid="*">
-        <File Id="fil73CB4B765F5EA9CBB8B2F0E704631CAC" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-file-l2-1-0.dll" />
+      <Component Id="cmpB602D053ADD9F06D1DDAD459D0AD49F5">
+        <File Id="filBB3EC49D7ACCD487EF3FF6B076B0AC7A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/FSharp.Core.dll" />
       </Component>
-      <Component Id="cmp9C6B0C2CE9FE877B82E5F408529E0E5B" Guid="*">
-        <File Id="fil6ABD30835CA2888AB8DE93E8EA599091" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-handle-l1-1-0.dll" />
+      <Component Id="cmp94FCA70498C126EF7B1798BACB6EB1EC">
+        <File Id="fil52D09578954DA79E6160465F686C139D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/hostfxr.dll" />
       </Component>
-      <Component Id="cmp43539A8BA8DB27019B3119EDB05B4B6C" Guid="*">
-        <File Id="fil75A39152A073FCC0451818342DB4C0F7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-heap-l1-1-0.dll" />
+      <Component Id="cmp2862306581BCABC7237184509FF6A8D6">
+        <File Id="filF1B64DFB91D38B83FE69CEB64969F93A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/hostpolicy.dll" />
       </Component>
-      <Component Id="cmpD6080144CF00F0024E1DC915C80DFA11" Guid="*">
-        <File Id="fil7958F8F6456E4D38C03E604F5B3CFAB8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-interlocked-l1-1-0.dll" />
+      <Component Id="cmpFE9E923B1509230ADF50695F46B181B6">
+        <File Id="fil8CE88DB63E7AFB43784A82FE0D847728" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Juniper.deps.json" />
       </Component>
-      <Component Id="cmp1043ED324C7B800A9261406A6B1A102A" Guid="*">
-        <File Id="fil08E549E4C2F11C8A0EB9FF97AEAC13A9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-libraryloader-l1-1-0.dll" />
+      <Component Id="cmpAD9B6D1849F12BF591F8157E39218F4F">
+        <File Id="filB1017D7E9E7781C4D60D2A400D413926" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Juniper.dll" />
       </Component>
-      <Component Id="cmpF4C724F5BDD39C1AD07988DADE651223" Guid="*">
-        <File Id="filE7F3886D33B6C73FE53878CCCFF5B08B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-localization-l1-2-0.dll" />
+      <Component Id="cmpFE002E9375F660D43E5FA699ADEDA8F2">
+        <File Id="filEE73D5CDE2632757EDF6387D8F5D7103" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Juniper.exe" />
       </Component>
-      <Component Id="cmp90D3465A579F92512D230E4298DF6C63" Guid="*">
-        <File Id="fil84CDE1E532D4333FEA596427B9AE73D2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-memory-l1-1-0.dll" />
+      <Component Id="cmpD21784CF862B5DB897F305DAA4C50417">
+        <File Id="fil852BAC40784B676EEB44647E196B0E42" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Juniper.pdb" />
       </Component>
-      <Component Id="cmpB4BA4CE60D88735EEE3167E7FDF59DF5" Guid="*">
-        <File Id="fil51191B865D161437D341CBD67CFB5168" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-namedpipe-l1-1-0.dll" />
+      <Component Id="cmp6454187F62B8ED07709A3EDEFD701CB4">
+        <File Id="fil7331296638E0BADE21EF5C1F903B3AD2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Juniper.runtimeconfig.json" />
       </Component>
-      <Component Id="cmpD6AE7B91624526A14E93E466990AD9A1" Guid="*">
-        <File Id="fil4C35EE4A30D864EA7943600762C13E07" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-processenvironment-l1-1-0.dll" />
+      <Component Id="cmp28C475E4254B760729CB4F22EEEA763B">
+        <File Id="fil880D4A8100C9D31DD9F8CBE4D1ADC0FE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Microsoft.CSharp.dll" />
       </Component>
-      <Component Id="cmpE39444F571038A92DE875097ADFB2698" Guid="*">
-        <File Id="fil1979494DD04A47C5C5FC12CA1184F0DA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-processthreads-l1-1-0.dll" />
+      <Component Id="cmpAA3AAC0933F4B94BAD411C5742ADC56B">
+        <File Id="fil04C697BFA6B0C159973C57DBC710E1B0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Microsoft.DiaSymReader.Native.amd64.dll" />
       </Component>
-      <Component Id="cmp0DC785364C43353546D8197BB3A27C8E" Guid="*">
-        <File Id="filC3A29C9E6E3107A7583EFFB3BF3B1594" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-processthreads-l1-1-1.dll" />
+      <Component Id="cmp9B9314B744646C9CE400E13DED10CD72">
+        <File Id="fil4F1CD33D0B63137F834552786B9D13CD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Microsoft.VisualBasic.Core.dll" />
       </Component>
-      <Component Id="cmp2F24AFC99A17C9899BACE930B94BB8E4" Guid="*">
-        <File Id="filBC91ADFE58EA3490683808F0305674CE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-profile-l1-1-0.dll" />
+      <Component Id="cmpC505C194B7382ACD34C4D4FB785A2E3D">
+        <File Id="fil05193CF2ED3FF6DD9C7690650DD6BAF2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Microsoft.VisualBasic.dll" />
       </Component>
-      <Component Id="cmp9A43B296685EEC9F7558DD6FB452AF46" Guid="*">
-        <File Id="fil271FFA9EED5A85288B0023EFB81AD0BD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-rtlsupport-l1-1-0.dll" />
+      <Component Id="cmp74A059EAAC03677AEA706CCEF68CA1ED">
+        <File Id="filC807B05B7772A0FF754C33F3949C3B62" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Microsoft.Win32.Primitives.dll" />
       </Component>
-      <Component Id="cmp2BD285FF182815A93D279FC3619CA108" Guid="*">
-        <File Id="filE7D12FA1D07D3F09416A88A9B5C7B440" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-string-l1-1-0.dll" />
+      <Component Id="cmp4A7F8C4FB2EE4A22C0C88686559B40A7">
+        <File Id="filA2161CF210556C075A3116C43792EDAE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Microsoft.Win32.Registry.dll" />
       </Component>
-      <Component Id="cmpD8B4E4BEB5BDF542CE36FA96BD1791C4" Guid="*">
-        <File Id="fil2E37BEA16024B522DCC85C8A4C28F433" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-synch-l1-1-0.dll" />
+      <Component Id="cmpE5BA0765812124C6BE111443698BC4D6">
+        <File Id="filDE4393F736EF1734EAE189AC55922515" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/mscordaccore.dll" />
       </Component>
-      <Component Id="cmp353A02A6286A9229B7C27F049BAD537A" Guid="*">
-        <File Id="filC923294F4B119F5BBF1F4D59CF5478EE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-synch-l1-2-0.dll" />
+      <Component Id="cmpFC76B313F8D5900603A05F020C742ABC">
+        <File Id="filE395A9992D30112C43B1080754804967" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/mscordaccore_amd64_amd64_8.0.23.53103.dll" />
       </Component>
-      <Component Id="cmp2A88889878C160592863F8EED283EE12" Guid="*">
-        <File Id="filE0692C249F4710D8DD4E87476412CE87" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-sysinfo-l1-1-0.dll" />
+      <Component Id="cmpC0826C094FFEC3A5D7B6B26A58DE7EBE">
+        <File Id="filB9C930E6760029A6AD1627890E790E6E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/mscordbi.dll" />
       </Component>
-      <Component Id="cmpFD2D448C2AE821652BB1AEC2BFB01DEB" Guid="*">
-        <File Id="filC88096F01D8B71A2833E2EA30523884F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-timezone-l1-1-0.dll" />
+      <Component Id="cmp850B25E7F278688A82102792842C85A4">
+        <File Id="fil13983CF3EA164685D38F387EAFB574E3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/mscorlib.dll" />
       </Component>
-      <Component Id="cmp1F962A0D72541614C332BF0F5BB4B0C9" Guid="*">
-        <File Id="filDAEE54A6906F97F8180C44412737FF54" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-core-util-l1-1-0.dll" />
+      <Component Id="cmpAD339DE5A9D7B6ACDFEAA8C93832370C">
+        <File Id="filE024222584DDA0E5823510BB6D115F60" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/mscorrc.dll" />
       </Component>
-      <Component Id="cmp1C2ED13C094E271A5E8CDD6062E48E3F" Guid="*">
-        <File Id="filDA43BD08070D987D1F15D9D5624182ED" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-conio-l1-1-0.dll" />
+      <Component Id="cmp6950A161337D642F276CFFEC3979FAA0">
+        <File Id="fil80B78F6AF6B0D0F52FA6AA4EB6BB74FE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/msquic.dll" />
       </Component>
-      <Component Id="cmp05D964367B096CE658CD42049AECB7F3" Guid="*">
-        <File Id="filD1ABE24889AB98C026500ACBF2E5F059" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-convert-l1-1-0.dll" />
+      <Component Id="cmpA6388067DEEE68199C63DC78CC1BD191">
+        <File Id="fil4B2FA2176D392DF352A054F4072E4D0F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/netstandard.dll" />
       </Component>
-      <Component Id="cmp872DE21F52FB936FA5DDEFE019945342" Guid="*">
-        <File Id="fil53F79FD9FA924C333FC97CA070DDBA53" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-environment-l1-1-0.dll" />
+      <Component Id="cmpD63BE9647A239F0F3EEC70A84A509CA1">
+        <File Id="fil5FC30D8313A2751C9B480467A39490C4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/QuikGraph.dll" />
       </Component>
-      <Component Id="cmpD5F61AA9B3F3C7371F3D59C71F8DFB1C" Guid="*">
-        <File Id="filBCCE70DA9744C5C8A2DA0401E87739A3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-filesystem-l1-1-0.dll" />
+      <Component Id="cmpE53732FC6F903DDF4F58D82FAF8A6392">
+        <File Id="fil605221F5D640FBEB310204F5AAA3327A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/Symbolism.dll" />
       </Component>
-      <Component Id="cmp5B7FD9FCFB096EBDE71B7567E6D1AC82" Guid="*">
-        <File Id="filC15BDA38E719B94C750B9A492AD08242" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-heap-l1-1-0.dll" />
+      <Component Id="cmp4B198E8965855C892BBCFDEFF97C8CE6">
+        <File Id="fil9BCCC872F9B010422A833D692E6C45CB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.AppContext.dll" />
       </Component>
-      <Component Id="cmp75B54F4DC329175A150094A130228C48" Guid="*">
-        <File Id="fil2E4B5F8460B8FEB613DF085FF6887614" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-locale-l1-1-0.dll" />
+      <Component Id="cmp78B07D9FB447F3A6DD8EA0D371788C93">
+        <File Id="filC895476A0AAF02E7F99F4B1D65478E89" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Buffers.dll" />
       </Component>
-      <Component Id="cmp15B06475B3DEDE3B2B5A794736808C0A" Guid="*">
-        <File Id="filB4A4A75A97C06EBAC0C003E311D4343F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-math-l1-1-0.dll" />
+      <Component Id="cmpC3EB3E2996861D5CD215D4E8B5231C29">
+        <File Id="filEF54DC126809162DD9483F495A573607" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Collections.Concurrent.dll" />
       </Component>
-      <Component Id="cmp38F49A04934A8FF4E72E74BF2AFF5F16" Guid="*">
-        <File Id="fil71537D4CEFA6BD69856665BA14613838" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-multibyte-l1-1-0.dll" />
+      <Component Id="cmp6DC3C8C784272FE86FCEB7BD0F9B1722">
+        <File Id="fil7C899A0C899CE962519CB53ACE844AA8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Collections.dll" />
       </Component>
-      <Component Id="cmp025FD1E7B426B49196A5C879A3D06218" Guid="*">
-        <File Id="fil752D83F31DDC4EBA69C92365A3C7B483" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-private-l1-1-0.dll" />
+      <Component Id="cmp504ED4C598B6EE0DCEDE31BAA4F5904D">
+        <File Id="fil3B5F3D1235E07571AE0D188D7818D57E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Collections.Immutable.dll" />
       </Component>
-      <Component Id="cmp463C192D1C86DDBCEB8205C2C7FEEA49" Guid="*">
-        <File Id="fil33623B6327A6B58C1373A71FFDC81668" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-process-l1-1-0.dll" />
+      <Component Id="cmp3BDB58E34BF8D59B79CDC9EF2AE78814">
+        <File Id="filB08C2107674E924134CC2F39D76ADF9F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Collections.NonGeneric.dll" />
       </Component>
-      <Component Id="cmp1EDA1E6B3D50534F86404006AB18BD05" Guid="*">
-        <File Id="fil8C7005D6930A79A2B5B55492DCFD6C4D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-runtime-l1-1-0.dll" />
+      <Component Id="cmp63464B8A101CED87C133FB6B73470A12">
+        <File Id="fil883C2A858C09B60D34D236E9C96C11F3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Collections.Specialized.dll" />
       </Component>
-      <Component Id="cmpC4ACCAEF1924BE231D0CD69EB4E8A99D" Guid="*">
-        <File Id="fil2A164EEC14525AA5FB5D16650B6CE340" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-stdio-l1-1-0.dll" />
+      <Component Id="cmp957AAAE38CE2514A6DA424DDA61412B4">
+        <File Id="filAF874C47012626960B05192E296E8A46" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ComponentModel.Annotations.dll" />
       </Component>
-      <Component Id="cmp47BCCF01A24E64A647C0A8B55DFCBB7B" Guid="*">
-        <File Id="fil13B5D29152062992EC6E9F786EC7D4AB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-string-l1-1-0.dll" />
+      <Component Id="cmpFDC46AC5498637E7376C936F4EBBA363">
+        <File Id="fil33ABB7337A154A87E8B3E052875226DA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ComponentModel.DataAnnotations.dll" />
       </Component>
-      <Component Id="cmpA0295CE3893B9A4575BD5BDE97F30E92" Guid="*">
-        <File Id="filDBB731BA3DD8EB050181B8A4DE0524C4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-time-l1-1-0.dll" />
+      <Component Id="cmp950E1C7326B810B5A3EFEC09BCBC0E01">
+        <File Id="fil26B7534FCCAE89FC53AA3F895EEB2765" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ComponentModel.dll" />
       </Component>
-      <Component Id="cmp2AEB8CA01A1DBFBA9CA0A5C88278E0B4" Guid="*">
-        <File Id="fil50CB3E48C280E3BFA47B4E40C67B9223" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/api-ms-win-crt-utility-l1-1-0.dll" />
+      <Component Id="cmpDD9C27F4860FABE548BC0EDFF3EF22D3">
+        <File Id="fil17605A9CCD8554125B3E2CFA6E568CD7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ComponentModel.EventBasedAsync.dll" />
       </Component>
-      <Component Id="cmpC8B838B5C22B5EB2186500C1119EA773" Guid="*">
-        <File Id="fil6DA29A77D57CB5B7F9B7A3F4AAEB8809" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/clretwrc.dll" />
+      <Component Id="cmp2434357D42C9B8816F33674E13EB4965">
+        <File Id="fil557EE2601A1B28F6706F6B6040AC99A0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ComponentModel.Primitives.dll" />
       </Component>
-      <Component Id="cmpFC8CD3103BF0074020675311200630EB" Guid="*">
-        <File Id="filEE27951766A57B2744CCCB20BAE5927F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/clrjit.dll" />
+      <Component Id="cmp556A7A309B076AA3B441EB76EBD5F58E">
+        <File Id="fil8B5875C58ACA70D07BA7E068BB86655B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ComponentModel.TypeConverter.dll" />
       </Component>
-      <Component Id="cmpC13192A1913AA790C927AACE69E4FF28" Guid="*">
-        <File Id="fil83C267516448700DBFD97BFC9B87FF41" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/coreclr.dll" />
+      <Component Id="cmpEC66B5130178DA76A80EDAC6D0775928">
+        <File Id="fil0B02BBDFC09B8058F4685C85D2F5143E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Configuration.dll" />
       </Component>
-      <Component Id="cmp3E78958605E3C7D3982B9450D7FA023E" Guid="*">
-        <File Id="fil9CD898B7310EE3C590E578BCD61F0B1F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/createdump.exe" />
+      <Component Id="cmp5C900BCB82128A01D72AEA30444E5FF4">
+        <File Id="filCF9AE54F0186891568693911F74125D0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Console.dll" />
       </Component>
-      <Component Id="cmp6D11F4220865092FB6003273638091EF" Guid="*">
-        <File Id="fil74136A0015F488E8D750E8F00E49707C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/dbgshim.dll" />
+      <Component Id="cmp938F83DD7DBB45086D6D0DAFFC677545">
+        <File Id="fil25A7C15C43C075B0625C72BD503281C4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Core.dll" />
       </Component>
-      <Component Id="cmpECE4CA6672B37C07B2012F7EFCC80B95" Guid="*">
-        <File Id="filD50E100276D14BDD66E08E02E9C3CBDF" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/FParsec.dll" />
+      <Component Id="cmpAFFBF898D718672629783D0F87DADB42">
+        <File Id="fil1ED9F0911C46BEC1B9622D3764FFF080" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Data.Common.dll" />
       </Component>
-      <Component Id="cmp9E68DC167357E734698400230C51AA6C" Guid="*">
-        <File Id="fil2557AA3CF554773C725C7B29EFD600ED" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/FParsecCS.dll" />
+      <Component Id="cmpA693F0D7B64F7BDD24599CC1EEFDDCFC">
+        <File Id="fil7444930C49C1FA1394436572BF9EE32D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Data.DataSetExtensions.dll" />
       </Component>
-      <Component Id="cmp1D99CDDD536D4374D40F5D3396B4CDDB" Guid="*">
-        <File Id="fil94636EAE87C676A422E061F442E201C1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/FSharp.Core.dll" />
+      <Component Id="cmp53FCBE1A1AE376FCC73195B7C2ECF99A">
+        <File Id="filEFAE68C635D94BCE4B9E9BFD986FDE10" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Data.dll" />
       </Component>
-      <Component Id="cmpB786270D966EE1862D1B5051F782DAD0" Guid="*">
-        <File Id="fil707371081D1F503E363E1173B70394D2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/hostfxr.dll" />
+      <Component Id="cmp1C4BBA177C4D6C71150D9182AE600B2B">
+        <File Id="fil8EDB34DF8F8F6605A84269C200545078" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.Contracts.dll" />
       </Component>
-      <Component Id="cmpE63499561FA233575BA6FD9E13B6FBD7" Guid="*">
-        <File Id="fil0120241F38824E0038AC9D34ABC0782B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/hostpolicy.dll" />
+      <Component Id="cmp820D1D17B6B20D95BEF13233A84B5E82">
+        <File Id="filFE926E668A8AFA67F05999103CCA0883" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.Debug.dll" />
       </Component>
-      <Component Id="cmp70A0555D7BF8DF67815784ADE528BFFD" Guid="*">
-        <File Id="fil4C623C319BC356678AF93503F7177F3A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Juniper.deps.json" />
+      <Component Id="cmp078894DFFC79E5112E63292756BFCC7B">
+        <File Id="fil48E0262F1E8EADB8A07979D1B949C084" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.DiagnosticSource.dll" />
       </Component>
-      <Component Id="cmp3EFC23C929AF05FFBB73C9E863E6B731" Guid="*">
-        <File Id="filB40D19EB619D4EA43A0A97E6B6C0E5D9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Juniper.dll" />
+      <Component Id="cmpA6D6B4399FBFDDF23586FE29CCE88423">
+        <File Id="filD22772140C764B0420DCEF67B9CC562A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.FileVersionInfo.dll" />
       </Component>
-      <Component Id="cmp4EB78D44AEF009EE5E7193F58D28ECCB" Guid="*">
-        <File Id="fil3E6ADF2F26644948BE71596720DD63D7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Juniper.exe" />
+      <Component Id="cmpB3F9D57750D4486C7B77EF82F1F7E9B1">
+        <File Id="fil6306F6095B6813E1790366175D75AF8F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.Process.dll" />
       </Component>
-      <Component Id="cmp2AE97B5FAB2FEC36D4AAC72BC71BEF4B" Guid="*">
-        <File Id="filCC1C9D343A4BB8DB52EFB4E306F980A8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Juniper.pdb" />
+      <Component Id="cmpCA1119414B2A37777B47860563D0A9C2">
+        <File Id="fil9C34D2AD43576384A4BBDE0846B4973A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.StackTrace.dll" />
       </Component>
-      <Component Id="cmp53822C6FE0D464D5D2B041E67FE23570" Guid="*">
-        <File Id="fil3F1F75D25432A1E101995AB298E80FED" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Juniper.runtimeconfig.json" />
+      <Component Id="cmpD1A4D524EDE1CEA5B355AF18A8A1A931">
+        <File Id="fil12B498CE02962FFCD82BBD6D4C655520" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.TextWriterTraceListener.dll" />
       </Component>
-      <Component Id="cmpDD032541812810A5C440C281D026DEEB" Guid="*">
-        <File Id="fil789410A60B1F72ECB06BE788989536CA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Microsoft.CSharp.dll" />
+      <Component Id="cmpF86092DC80A3EFDD6206D26804839ECD">
+        <File Id="fil95E425C307A93B7E8B0CE469DEA6620F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.Tools.dll" />
       </Component>
-      <Component Id="cmp22E54F8F3138B8340B1FB0A1612AAA3E" Guid="*">
-        <File Id="filA21788BDD69E0C68306570D3EDDC13E1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Microsoft.DiaSymReader.Native.amd64.dll" />
+      <Component Id="cmpC4D04418B21EB6689030508D512911D8">
+        <File Id="fil6525BF0CCE2D14D18073C62BB85BEE73" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.TraceSource.dll" />
       </Component>
-      <Component Id="cmp6816A2EDF0748B85E049C200146C3826" Guid="*">
-        <File Id="filB11843EA61AB027FAF930135033B19B9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Microsoft.VisualBasic.Core.dll" />
+      <Component Id="cmp5846DFD81B80A47FDDB26D8ED0A76E21">
+        <File Id="filAE84E0F6157B3219C3BBDB6B35C4E7AC" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Diagnostics.Tracing.dll" />
       </Component>
-      <Component Id="cmp139B687B17399ECB2DFA788129B7E876" Guid="*">
-        <File Id="fil77E95127584870D3CF5955AA278DC0C5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Microsoft.VisualBasic.dll" />
+      <Component Id="cmp60317D7F2B6C37E34C01813A1E4CF463">
+        <File Id="fil11CE7F9FD2A0C66954E8FA70940494B5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.dll" />
       </Component>
-      <Component Id="cmp2942EB0FCCE905F1F515D13BA9EC4161" Guid="*">
-        <File Id="fil1A208EBB7CB8C945366ECF3C729AA236" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Microsoft.Win32.Primitives.dll" />
+      <Component Id="cmp213A9757D4CF9B98577ACFEBC750D41D">
+        <File Id="filBB8B01FE8DA82C7D456868D1E6FB9252" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Drawing.dll" />
       </Component>
-      <Component Id="cmpE13188BAB1C52B9838FC56F3DD4CDD4A" Guid="*">
-        <File Id="fil76FC69B1FE322ACD3E68B4FB3CB1B14C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Microsoft.Win32.Registry.dll" />
+      <Component Id="cmp87F6C04E3E2FF5CC4A9C60A1BA7E1436">
+        <File Id="filB2FE6DE254017D174E473779856205F7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Drawing.Primitives.dll" />
       </Component>
-      <Component Id="cmp7EBF32039313F8975EC60D544C4BFCB3" Guid="*">
-        <File Id="fil509ADBE7B9038404529AF575D2A268BA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/mscordaccore.dll" />
+      <Component Id="cmpA7927E617744FC23759A21A497E45D4F">
+        <File Id="filC82100C3EB2603D84AD4FAE218EC92D3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Dynamic.Runtime.dll" />
       </Component>
-      <Component Id="cmpDFC682C5AB21138A59E20F0F02C15390" Guid="*">
-        <File Id="fil6877463307D442EE3204D5DF37F9B6C0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/mscordaccore_amd64_amd64_6.0.121.56705.dll" />
+      <Component Id="cmp2DACC78FB0C2676534E3424C8512277F">
+        <File Id="fil8B20C9EF758453C632C97FE5A2F16A2E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Formats.Asn1.dll" />
       </Component>
-      <Component Id="cmp5080381BE3184CBEC6014402DC98B80F" Guid="*">
-        <File Id="fil15B89BC704B1F24E565DA64EC39217ED" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/mscordbi.dll" />
+      <Component Id="cmp4EE1FEAE26F79C30CA03C9C3D99AFA39">
+        <File Id="fil752E964EF39C25787F4E50594C83C22A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Formats.Tar.dll" />
       </Component>
-      <Component Id="cmpD0E95A101687E5085523F0309FACAAC1" Guid="*">
-        <File Id="fil2DAFD2EC271473002EF076A736B9A00A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/mscorlib.dll" />
+      <Component Id="cmp361F62447F72730B15123D82C2CEFB79">
+        <File Id="fil515E9CCF63763B911573935E1D54B24D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Globalization.Calendars.dll" />
       </Component>
-      <Component Id="cmp406FBC7B8DDF84615AF77D384288C8F8" Guid="*">
-        <File Id="fil186123B1A4A3F65D4650DE69168EFD18" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/mscorrc.dll" />
+      <Component Id="cmp62E39C75329AC3B86C0B36464BAB245E">
+        <File Id="fil1F29DAF5A6297675C9C7CA3C2A374520" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Globalization.dll" />
       </Component>
-      <Component Id="cmp84288CFF84064615AF77D38F8BC7B8DD" Guid="*">
-        <File Id="fil0DE69168A3F65D465EFD18186123B1A4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/msquic.dll" />
+      <Component Id="cmp03BF08049D1D816AAB9CDE9AF25A2FEE">
+        <File Id="filAE9BED9E3DD29E6031E493238505D265" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Globalization.Extensions.dll" />
       </Component>
-      <Component Id="cmpD0621BEA621676FE813F7312658915A2" Guid="*">
-        <File Id="filEE9CC4F9EB7E5BC33D0FF63BD1AE918E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/netstandard.dll" />
+      <Component Id="cmp409098B9BF2277EC001C1F8F3AA494E5">
+        <File Id="fil1B53E43F6F0FFF6DE1439A229DD6A20B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Compression.Brotli.dll" />
       </Component>
-      <Component Id="cmp71922BFD67BBA41FCF08920D0EE7F416" Guid="*">
-        <File Id="fil90D22FB339542F0BE5CF180F23D40788" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/QuikGraph.dll" />
+      <Component Id="cmp082EB5C49723ABDB3F0601B74E115A92">
+        <File Id="fil690F915FC9EAA881AD8DDC8C63850A65" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Compression.dll" />
       </Component>
-      <Component Id="cmp70942017A78FA389E0ECF7CFF3A417C3" Guid="*">
-        <File Id="fil5CB37EA7E55D1D364FA0842459011A02" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/Symbolism.dll" />
+      <Component Id="cmpC36583C31FD03C0D5666A7168EC754BB">
+        <File Id="fil3E98BB2EE24CA397E8EC15B2DDABBBDB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Compression.FileSystem.dll" />
       </Component>
-      <Component Id="cmp224737A025D0CCCA33D889D6F8F91DA3" Guid="*">
-        <File Id="fil5FBA58EA0803A2361A8BCA6C0B2FCF65" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.AppContext.dll" />
+      <Component Id="cmp43BBE366E4F65BB97AD419A1E8328EA5">
+        <File Id="filF4FEE0436CAD94CF098BA31E47A8D9BA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Compression.Native.dll" />
       </Component>
-      <Component Id="cmpFA3F8E6E178AE5E9CF0E12A3C79464D2" Guid="*">
-        <File Id="fil362193B006B1126AC5941803CBE9EC11" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Buffers.dll" />
+      <Component Id="cmpAF8773696AAC6EDB506B96C7F4F886D0">
+        <File Id="fil6EDCC1AAA140ABFA7710569697AC0606" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Compression.ZipFile.dll" />
       </Component>
-      <Component Id="cmp5ADC877B7C4FEDC698F94020113DF193" Guid="*">
-        <File Id="fil94F3450FF3D1B0852A39C5C0D1620960" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Collections.Concurrent.dll" />
+      <Component Id="cmp89A8C17D40A78700C0E98DD0D64DEFB5">
+        <File Id="fil1D62A49288D7A9A514504CEFDA4E852B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.dll" />
       </Component>
-      <Component Id="cmpB19DE0E47134274A5438A73A47718820" Guid="*">
-        <File Id="fil1C3B3942040677C13C89085868C31A14" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Collections.dll" />
+      <Component Id="cmp6D1E30B7990AAEDF2ED1E624AC9EBC31">
+        <File Id="fil671FEB496F377B660365CC64EC7B80DE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.FileSystem.AccessControl.dll" />
       </Component>
-      <Component Id="cmpC9F528A7D22087A3752D877D148A9B79" Guid="*">
-        <File Id="fil035DC9400384A9F730212FF86195BC3A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Collections.Immutable.dll" />
+      <Component Id="cmp970BFB927D513A51982DCCF9E3552F74">
+        <File Id="filFA4C2F9B20191579CF0E095FA3F4ADCE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.FileSystem.dll" />
       </Component>
-      <Component Id="cmp9FB6427C36A6B07F626EA546CB1C6065" Guid="*">
-        <File Id="fil6FD00A3B9CDAF3EFE5CDB6EAF4D16CD6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Collections.NonGeneric.dll" />
+      <Component Id="cmp9DA0E3C0E9A17D7465C24D8D61EC7A00">
+        <File Id="fil64ACA0E89BB6E62B71B302EBCDA17305" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.FileSystem.DriveInfo.dll" />
       </Component>
-      <Component Id="cmp5B78D0039575414C86EDF54AE59652D1" Guid="*">
-        <File Id="fil6EE399269CD0A240C27E359F16B7129D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Collections.Specialized.dll" />
+      <Component Id="cmp768CBE21BDB2549AFB8C6A2BAE51DFC3">
+        <File Id="fil840BC0DCD9B16AA7D61C8823998A409A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.FileSystem.Primitives.dll" />
       </Component>
-      <Component Id="cmp19C1D10CD67EB8EF49A4297F158FF236" Guid="*">
-        <File Id="fil67BB467C0715EAFCF4CEA8B2CDE6D211" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ComponentModel.Annotations.dll" />
+      <Component Id="cmpB8FC5335B9BD6302E1581E5D793940AB">
+        <File Id="fil33E23E28938BF805F03208FC337A10F2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.FileSystem.Watcher.dll" />
       </Component>
-      <Component Id="cmpE8BD81DA9D1EBED93E5C138C6B3C42B0" Guid="*">
-        <File Id="filBAC31B785AC1E04CF5120803B96F143C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ComponentModel.DataAnnotations.dll" />
+      <Component Id="cmp10115F9F4F9037C9848D7D621A9880DD">
+        <File Id="filECAF75FF223DCF67D7B667B3E3637E90" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.IsolatedStorage.dll" />
       </Component>
-      <Component Id="cmp67363EF8E8ED6ADD411C70C73A01E3CD" Guid="*">
-        <File Id="fil0ED1D35BD0F056DCD8C80DE92E103E03" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ComponentModel.dll" />
+      <Component Id="cmp2D735165178396F275CE110F3DA4A29F">
+        <File Id="filAF5D01E8BFA82C0B3CCBDBE82ABF2FB2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.MemoryMappedFiles.dll" />
       </Component>
-      <Component Id="cmpEFE8B14CB71DD2F5EDE0F63CCEFDA5AE" Guid="*">
-        <File Id="fil20B6A4213E91724B0272B25141653EDA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ComponentModel.EventBasedAsync.dll" />
+      <Component Id="cmp10967C1BDB0CF6B8D72BCB86BD1B123E">
+        <File Id="filB9F762170C0581ACFE0E8A42C02DB1AF" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Pipes.AccessControl.dll" />
       </Component>
-      <Component Id="cmpF168C138E25DF29DEDFAB5FC32DD72A0" Guid="*">
-        <File Id="fil0592B87790A15B33636114A69D55A906" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ComponentModel.Primitives.dll" />
+      <Component Id="cmp1ED1587862E6693D370764BE885BE03A">
+        <File Id="filD4301E684658EAFD55D364B553A2AFE6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.Pipes.dll" />
       </Component>
-      <Component Id="cmpDE98AA5DF78C0997AEC9A0FE9D269579" Guid="*">
-        <File Id="fil67056DA41F258B3FFD6B9A4CD22ACF94" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ComponentModel.TypeConverter.dll" />
+      <Component Id="cmpC57AA48F8956DA4BEC364D8EB3DA9F6B">
+        <File Id="filD988EC2F89220C91DED3ECA3F7B8B5BC" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.IO.UnmanagedMemoryStream.dll" />
       </Component>
-      <Component Id="cmpD90EB53F5FB35C9E074096AB5C4249E5" Guid="*">
-        <File Id="fil78E5007C3AEE60992DC59C8033A8014A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Configuration.dll" />
+      <Component Id="cmpE7170C401A66CFD3B64BA5FB4E8DC24F">
+        <File Id="fil349B564B3E33980BD63B6F418489C4A7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Linq.dll" />
       </Component>
-      <Component Id="cmpB1A2976800ACA8D76EA517C8BEBB585E" Guid="*">
-        <File Id="fil7D37D55AB233F2BC98EB0D50B6850967" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Console.dll" />
+      <Component Id="cmp726C81C1A833CB6EDB5750B2057133DB">
+        <File Id="fil59F13FE199B488A2870E75FD90B03D74" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Linq.Expressions.dll" />
       </Component>
-      <Component Id="cmpBD597E96BC47DBD6358BDC81F4F88CAA" Guid="*">
-        <File Id="fil520A8F7CB7FDB98A187E61EAE974EB6B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Core.dll" />
+      <Component Id="cmp33A0928FD548D2B2ADB73B80420953DC">
+        <File Id="fil7BDEB597E2D9B37432F2F8211010E619" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Linq.Parallel.dll" />
       </Component>
-      <Component Id="cmpC448B497E8BCA53D7B243C0C44E586A9" Guid="*">
-        <File Id="fil9C4B5E4B836C0ECDC6CDE27D0010342E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Data.Common.dll" />
+      <Component Id="cmpC1A7B14A2F54E12EE19234E055927E6F">
+        <File Id="fil8A0E335E246D71800250B6A8C0908670" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Linq.Queryable.dll" />
       </Component>
-      <Component Id="cmp2A976D12476E29D6288E98D16C2E9F96" Guid="*">
-        <File Id="filC6AF288C2B1DE6A15C7374263D9048D4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Data.DataSetExtensions.dll" />
+      <Component Id="cmpC339AFEBD5A64246A54F1F2783621954">
+        <File Id="filC9008626E720E2B3153BCBC98A356D18" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Memory.dll" />
       </Component>
-      <Component Id="cmpAC4A3E39B5E02478DFBFB64FE558FA46" Guid="*">
-        <File Id="fil4E4F16C2BAE7882B00D2F8B8347946DE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Data.dll" />
+      <Component Id="cmpCA126BD634173CB37A61E769211A6F96">
+        <File Id="fil67EBFB1B4642ABBB6F45006876C7AA4E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.dll" />
       </Component>
-      <Component Id="cmp167F0122FAC3611DE08ECDC8EA6A9F6C" Guid="*">
-        <File Id="fil9E8208354AB1F0ED1C3A6A582018B657" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.Contracts.dll" />
+      <Component Id="cmpDC2B06B61B308C59725BA3A2C6594F4F">
+        <File Id="fil657341375609FC5FECF1DE1523E1FA4A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Http.dll" />
       </Component>
-      <Component Id="cmpC58633ECBF78DD02490B90A18F7AF506" Guid="*">
-        <File Id="fil24CAF58697FEC09DCFB039F4E399C792" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.Debug.dll" />
+      <Component Id="cmp8AFFA1BFF7761DE329EFC134F6C9E9AF">
+        <File Id="filDB60860BC0596E326234AC178E885D08" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Http.Json.dll" />
       </Component>
-      <Component Id="cmpA782BC3DE0C9488D10ED79C8E4B52D5D" Guid="*">
-        <File Id="filAB68AD36BF0B532D5979CADBB7112C25" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.DiagnosticSource.dll" />
+      <Component Id="cmpDAE5FC251EE207A8D9BA878A2B4F7F21">
+        <File Id="fil0AC2FC425AD52F13C16C281DFAA71ED7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.HttpListener.dll" />
       </Component>
-      <Component Id="cmp8ABA095211026545841691A7D5D6182F" Guid="*">
-        <File Id="filC4145ABEAB3FD91C24626E3F47999986" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.FileVersionInfo.dll" />
+      <Component Id="cmpB187F0C21175D881F117114D752F974A">
+        <File Id="fil0A2AD877EA32737B918FB8AC17E6E879" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Mail.dll" />
       </Component>
-      <Component Id="cmp99BD98DEE50F8A5B9D254BDB3E70864E" Guid="*">
-        <File Id="fil369A7F77D2CA9B27CEB573786590C366" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.Process.dll" />
+      <Component Id="cmpB8680B4D5CEC351F5F72166D0335B93B">
+        <File Id="fil89B28E13E2518F7389B2D1B2C9BA5408" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.NameResolution.dll" />
       </Component>
-      <Component Id="cmp1014CDE1C3CADFD657FEAA65B5D22FBF" Guid="*">
-        <File Id="fil6457D50D5601419CF96532FF55087E46" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.StackTrace.dll" />
+      <Component Id="cmp35112CE6DDCA509F93874CBD1B176A23">
+        <File Id="fil40603A807EB969D84F1DEF70E3A27440" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.NetworkInformation.dll" />
       </Component>
-      <Component Id="cmp3AE1D2FA661757148CCE523963ADB6F5" Guid="*">
-        <File Id="filF66C7DF3F3061FE74FDBE38BFE2AED0D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.TextWriterTraceListener.dll" />
+      <Component Id="cmp1DAC2600361213C6CA8DC69BF7DE401C">
+        <File Id="filC2D1D78B4F57FE3E848C6DE4E9D07800" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Ping.dll" />
       </Component>
-      <Component Id="cmp7DE984C3F6EF9FFF33A66ACC261AFE44" Guid="*">
-        <File Id="filEB39D8496227C9C4F918E9180CCB957F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.Tools.dll" />
+      <Component Id="cmpD687C065138FDAB69DEE45AF9052B227">
+        <File Id="fil630CB089F8C6FA067091FA19F128D64E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Primitives.dll" />
       </Component>
-      <Component Id="cmp8E93045256AC83DD6F0BD4FEF5A797C7" Guid="*">
-        <File Id="fil1CE2ACA1E156E69AB36A205AA410FEAD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.TraceSource.dll" />
+      <Component Id="cmp0C4AA66EC7BCF4DF36EFCCD67AA7801B">
+        <File Id="filD99AAFFB40CD4D43C89545A850F1AE2B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Quic.dll" />
       </Component>
-      <Component Id="cmp7069685E8191219657D74BB2FAA6177A" Guid="*">
-        <File Id="fil3530137956207205CBA5CB43A1F8FA52" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Diagnostics.Tracing.dll" />
+      <Component Id="cmpF005F7BFF0F838886CC26E7AC79D5250">
+        <File Id="fil5B3C803A03488C97ED17D38BE632D676" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Requests.dll" />
       </Component>
-      <Component Id="cmp1D6F51E7335184F3FF00D9390A8029F4" Guid="*">
-        <File Id="fil89894B0B9C995EF47D47B6A97590E0A5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.dll" />
+      <Component Id="cmp359E67E4B618F308DA213E02E200EF7C">
+        <File Id="filE730AF5DCBBC1CF350BABA85860AD427" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Security.dll" />
       </Component>
-      <Component Id="cmp543860D4298FCCEE05C006DA03AB71FF" Guid="*">
-        <File Id="filB791595C7B0A671940932EFF33AFF56E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Drawing.dll" />
+      <Component Id="cmp0A251588C4E4AD2EA78E0066652767D2">
+        <File Id="filBCFD8EF9834AAAF8D2077AF427569F44" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.ServicePoint.dll" />
       </Component>
-      <Component Id="cmp21A0E7CD0C9546528CA292EAB7532AFA" Guid="*">
-        <File Id="fil34DCB327C4515C5B151D6DA2CF454A35" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Drawing.Primitives.dll" />
+      <Component Id="cmp938D5FD186B41F1C91B52159DBF3C91E">
+        <File Id="filCFE3D724F3C550C179FED72E8A23BF1C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.Sockets.dll" />
       </Component>
-      <Component Id="cmpD9F8B67965B34B195FB791FB78972876" Guid="*">
-        <File Id="filBA7FFE4F9F2A6174976193660CA5168D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Dynamic.Runtime.dll" />
+      <Component Id="cmp8AE3DCBCDF927DA78D3187EA5C1ACED4">
+        <File Id="filA060D379234D5C5F3626405288C01C6F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.WebClient.dll" />
       </Component>
-      <Component Id="cmp65A646BA870F219323C6F3B438BAC8D2" Guid="*">
-        <File Id="fil55AE4A01BC6526FFEEE1FB107DAF69F9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Formats.Asn1.dll" />
+      <Component Id="cmpAA19BC7D71961FD5C0474EA1411D18ED">
+        <File Id="fil6E0E9ED193AC171EA2C6AFC45E22D092" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.WebHeaderCollection.dll" />
       </Component>
-      <Component Id="cmp49201C6512097E8CB7EBF4B1DC8F80EC" Guid="*">
-        <File Id="fil9401DADC65FE839D6CDA2235A7E9EA19" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Globalization.Calendars.dll" />
+      <Component Id="cmpDDD9248743FF600C3E1AF17899961D6F">
+        <File Id="filD7CA0919D6CD0ECD22F85F31A77F1BA9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.WebProxy.dll" />
       </Component>
-      <Component Id="cmpE096A3072F00DFF03309EBD4155B1ED8" Guid="*">
-        <File Id="fil5158BEC1C7D56D010834DDA31DBDD28A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Globalization.dll" />
+      <Component Id="cmpBA46A35195D5494A1E0A7C9F5F93413D">
+        <File Id="filAAA8C7624387C295115EAD7043983B0F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.WebSockets.Client.dll" />
       </Component>
-      <Component Id="cmp6BAD6FEF0B00265599F8B4ADE1FCB360" Guid="*">
-        <File Id="fil6461B8BB2EAD727540C87BEA41814BCB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Globalization.Extensions.dll" />
+      <Component Id="cmpF2CB8ECD55150F031A997C287072707B">
+        <File Id="fil4ADB39A139CE2048C4004B1D921E2CFA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Net.WebSockets.dll" />
       </Component>
-      <Component Id="cmpCF1A89E9881995398B6EB5C513581BA7" Guid="*">
-        <File Id="fil28E33174C0945A4683A81C0A0C6C4AFD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Compression.Brotli.dll" />
+      <Component Id="cmpD1AA0454A6AAD468B53F0B9D89AA5E91">
+        <File Id="fil8A4342A0944E4DBA45D528F163F8E82A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Numerics.dll" />
       </Component>
-      <Component Id="cmp3F455BDA74607797CDD7653F9AD17AC9" Guid="*">
-        <File Id="filC78B12E9D356E420FBF905297D2B4353" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Compression.dll" />
+      <Component Id="cmpBFD1BD5B1D255E84B0CFB34BACDB2E0E">
+        <File Id="fil28B23FDB4D7D806525D0E820B5C5BC15" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Numerics.Vectors.dll" />
       </Component>
-      <Component Id="cmp0D2FC9632B67B8801A1A4820FB2B07AB" Guid="*">
-        <File Id="filADABBD941D6FBCC71B9DA9B9D56C3E1B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Compression.FileSystem.dll" />
+      <Component Id="cmp34ADA473C0C2DFC21D0245D1494F9726">
+        <File Id="fil983A27EC50A1494F0468480BE1532157" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ObjectModel.dll" />
       </Component>
-      <Component Id="cmp61A1A48232B67BFB2B07AB8800D2FC90" Guid="*">
-        <File Id="fil6C3E1B9DA9B9D51D94ADABB71D6FBCCB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Compression.Native.dll" />
+      <Component Id="cmpF13D7679B02DEDABD6F80CC53EE3100D">
+        <File Id="fil6FD9872577C8042CC4A29C3DEED65A94" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Private.CoreLib.dll" />
       </Component>
-      <Component Id="cmp181E6FF059E6845A3E18ED3AC6EF13C6" Guid="*">
-        <File Id="fil5801DFC202D00A8276077375C9AB90E4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Compression.ZipFile.dll" />
+      <Component Id="cmpDA5F0EF1F4FCA0F4D26B8A9DABB63501">
+        <File Id="fil028CEFF8612DC8917C6CC3BC70F681F5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Private.DataContractSerialization.dll" />
       </Component>
-      <Component Id="cmpE87BCDAC0B90C58EACBD2ABA46ED36DB" Guid="*">
-        <File Id="fil00C73FEE3913B6CD849780435F48BBE3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.dll" />
+      <Component Id="cmp5486CE5457863D7CD83F1F10FBCAD9E6">
+        <File Id="filB516E7A515D9946CC2A661957CBB63DE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Private.Uri.dll" />
       </Component>
-      <Component Id="cmp0B36CCB20D027C9979B01C445E5C1646" Guid="*">
-        <File Id="fil292521CD5D6926126D678424882A099C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.FileSystem.AccessControl.dll" />
+      <Component Id="cmp47C31AA08BFF33023CF4E95C2F947F2A">
+        <File Id="fil38C2A18FDA206D898CA805D114FE0C36" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Private.Xml.dll" />
       </Component>
-      <Component Id="cmp7783BB623ED5863E41DD4AB24D9B3B2C" Guid="*">
-        <File Id="fil83537484F75A933C3CD0C7AC0CA0B330" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.FileSystem.dll" />
+      <Component Id="cmp2849FDBF5A65D2961AF72343B05C5B75">
+        <File Id="filD5191581DC6B433601C3B097C1E7ABE3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Private.Xml.Linq.dll" />
       </Component>
-      <Component Id="cmp5053CCFF19FDC8D9B04FDA2CAFE3ECC2" Guid="*">
-        <File Id="fil31D410443AB4F94F374E84F503225D4F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.FileSystem.DriveInfo.dll" />
+      <Component Id="cmp3FBF429CA82F49014AA4E4AD2DC3F095">
+        <File Id="fil3774BD1B7110685A4D84CCFCA616BE67" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.DispatchProxy.dll" />
       </Component>
-      <Component Id="cmpF6F3CC57951FB289BC721EABD44A5956" Guid="*">
-        <File Id="fil371C82575E125DC462D16536F73753A4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.FileSystem.Primitives.dll" />
+      <Component Id="cmp95FA5060AF142DC5CBD938C6C3F5BE92">
+        <File Id="fil14F9EB638DDB7D8A79BD270F1D344B7A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.dll" />
       </Component>
-      <Component Id="cmp078BBB5056EA0D3E3FF0C79E2E344C08" Guid="*">
-        <File Id="filD6B3C477E2CB1FB504D36EEC70C15400" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.FileSystem.Watcher.dll" />
+      <Component Id="cmp65B0A1275F5A362A9DB50DA6B4F9CA52">
+        <File Id="fil2B34A90249DE996ECB7D4DB40EC54DBB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.Emit.dll" />
       </Component>
-      <Component Id="cmp95D8F42E2D499BC9CA7D9688B30C0D4C" Guid="*">
-        <File Id="fil4208FEE6C418EA33D31B5EFD399591FB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.IsolatedStorage.dll" />
+      <Component Id="cmp1FA3D81ED146646CC2102059CED09388">
+        <File Id="filFC4CA59AA65C98BECB7C7DDC3E97C5CE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.Emit.ILGeneration.dll" />
       </Component>
-      <Component Id="cmp2CBC48097DFA5FE61D8F5965E0233ED2" Guid="*">
-        <File Id="fil31E3ED3627E89AD3AFAB56114FF1A52E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.MemoryMappedFiles.dll" />
+      <Component Id="cmp6D9AE704EEED9EA8EB6705175B09DDD5">
+        <File Id="fil1FC78B9B8DBB06E09D0E4CD6EBA5EC7F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.Emit.Lightweight.dll" />
       </Component>
-      <Component Id="cmpB3B260C8F785F6D39DC37C35996FA6E2" Guid="*">
-        <File Id="fil2B11066ACDC916153BF3F9785DE669C4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Pipes.AccessControl.dll" />
+      <Component Id="cmp8E2E3E2AF0593CC7E4979AC4C4B0A9E3">
+        <File Id="filC641153B40C493F0EB768A5824BABBE4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.Extensions.dll" />
       </Component>
-      <Component Id="cmp4552B52A1AD04A5A70D8B8D4CFF5A96F" Guid="*">
-        <File Id="fil75A138C3E1B6402F7E7015D7AFE07E7B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.Pipes.dll" />
+      <Component Id="cmp04D9B8BC017707D3D4AA732175ED5CCE">
+        <File Id="fil05A69346BB1CD83E0C4A4A61A21B41EE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.Metadata.dll" />
       </Component>
-      <Component Id="cmpCD8800D37C6CA36A211E931998B10511" Guid="*">
-        <File Id="filF48949BCC6BBC6DB59D0C7168415DAF5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.IO.UnmanagedMemoryStream.dll" />
+      <Component Id="cmp216F5D03730D7269059D2FBD1995D260">
+        <File Id="fil5FE4A89989E1DA4D0E970C8ED6EA508B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.Primitives.dll" />
       </Component>
-      <Component Id="cmp0EDEE11E184F555E7CDEF950A66454C0" Guid="*">
-        <File Id="fil87CBE08C070B4FBD03D1701C669A4809" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Linq.dll" />
+      <Component Id="cmpC436403B4BBA10F88983572DD563B06C">
+        <File Id="fil5567065049FDEC5EB1AEE8C88324D543" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Reflection.TypeExtensions.dll" />
       </Component>
-      <Component Id="cmp54C07C67B86B63392C51D51F114AD1D9" Guid="*">
-        <File Id="fil4C850408C2D7625366FCD674634972D1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Linq.Expressions.dll" />
+      <Component Id="cmp43FD97AE46CDCCD7D626A762C6701602">
+        <File Id="fil35536E29D9112D6F3991D9EEB7FB51DC" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Resources.Reader.dll" />
       </Component>
-      <Component Id="cmp4E0C597CF8C436A2FC2B65C616A4F351" Guid="*">
-        <File Id="fil7CC731FDFF4F911A0C406F391C9C8895" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Linq.Parallel.dll" />
+      <Component Id="cmp3FCB4F0921E154CDA1FB5EFB4751C1AD">
+        <File Id="fil445899B8E9E318384CC998F3710DA20B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Resources.ResourceManager.dll" />
       </Component>
-      <Component Id="cmpD6661D3585B8FD5555F420BBAA4892EB" Guid="*">
-        <File Id="filFAF9AFBFC870E965650D651B9D9331D7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Linq.Queryable.dll" />
+      <Component Id="cmp8AB2A1A210A3C3B9D05434BB10CBA835">
+        <File Id="fil390F34CA3AAC68F11E2625E3CE2101CB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Resources.Writer.dll" />
       </Component>
-      <Component Id="cmp3BA69CE7059B64F5F24ECAA8205BADE4" Guid="*">
-        <File Id="fil1A53C2491ED1F7CCA9F6D9B7C3DC3E0F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Memory.dll" />
+      <Component Id="cmp8B24DF45D1D26BA790786D1207968510">
+        <File Id="filBD3873673F8AB182BB7059F386442D96" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.CompilerServices.Unsafe.dll" />
       </Component>
-      <Component Id="cmpC1860B2C408D84FAD9F73088BC9FF5EB" Guid="*">
-        <File Id="fil581E800E009470CF1BF3D4A82F09DF12" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.dll" />
+      <Component Id="cmpFADC10EDC4F5DF06CE25877A0ABFCE17">
+        <File Id="fil5D1CFBE48E611D9F1A5F457948205974" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.CompilerServices.VisualC.dll" />
       </Component>
-      <Component Id="cmp8FFDB8CD71FE17AA07A65E0FE615202F" Guid="*">
-        <File Id="filD66E91B3989350D2EA355B763751A37C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Http.dll" />
+      <Component Id="cmp16C08CD947BDE531F0135F4B6BED4D57">
+        <File Id="filE0FE11BFBD460F63F442F2153D6CE262" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.dll" />
       </Component>
-      <Component Id="cmp25D4702882B9C78953954428D55AF988" Guid="*">
-        <File Id="fil0A196AFC32AEAA6BFE9A59D9B1E74AB4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Http.Json.dll" />
+      <Component Id="cmp22B849DD5B24EFCB158AA7D830EC4CA7">
+        <File Id="filD83F90BA82A830F8DC5D57287A51575D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Extensions.dll" />
       </Component>
-      <Component Id="cmpC20BA103A72E79A00B3BC6E82D1F71D6" Guid="*">
-        <File Id="fil398F7C6CE84DA0D9FFCDF6DF77F406EF" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.HttpListener.dll" />
+      <Component Id="cmpA845B2F5225857C724D69C2D16DA510B">
+        <File Id="filFAFFF28108FDA8F4BA9F8C3A32AA310F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Handles.dll" />
       </Component>
-      <Component Id="cmp77BD1E8886F39DD40E8B813F3EE5A21F" Guid="*">
-        <File Id="fil64685C76DF0C59D28EC86BC30E8D2BFB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Mail.dll" />
+      <Component Id="cmpC474AC1D404B4E29138F5A07B6FF7807">
+        <File Id="filED0157D7A3633463130FEFE5AF23BDE0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.InteropServices.dll" />
       </Component>
-      <Component Id="cmp7F83B2C8DB179CA2050FE7B762E390B7" Guid="*">
-        <File Id="fil515467749885B6B029E21523D8B0D3D6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.NameResolution.dll" />
+      <Component Id="cmp012520FF942BDAEA3A30C0387D39154E">
+        <File Id="fil911C49B43A70745E24D7F7D6DB19B33A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.InteropServices.JavaScript.dll" />
       </Component>
-      <Component Id="cmp0EC7FAF2662658199827FEC3B481F770" Guid="*">
-        <File Id="fil8515A1CB511A528DB2857624B23E3AA4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.NetworkInformation.dll" />
+      <Component Id="cmp527E5C7086E94CFF6C70618595D3802D">
+        <File Id="fil11A8BC7FA19D6A601A585EE6DD758CA3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.InteropServices.RuntimeInformation.dll" />
       </Component>
-      <Component Id="cmpA1F7806FE315736DC2BD68421B59A2B0" Guid="*">
-        <File Id="fil397FFDFF5E0ED63BBE4D08AB607C8E07" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Ping.dll" />
+      <Component Id="cmp928AB8539EF4E0A9DD175F71C3E4117B">
+        <File Id="fil1E7F3958EB3357B38493A5D692FA77D4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Intrinsics.dll" />
       </Component>
-      <Component Id="cmp68FE260A619FEE91BA09FF441D03F9DC" Guid="*">
-        <File Id="fil07B38B98FD70D2A82E58718129A2ED67" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Primitives.dll" />
+      <Component Id="cmpF6FD683B2B6FF0C1842965EFBDC789A9">
+        <File Id="filE6273030761532E557D083D6A51F2252" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Loader.dll" />
       </Component>
-      <Component Id="cmpE91B61919FF44E2D03F9A060A68FFEDC" Guid="*">
-        <File Id="filD70D8F9A2ED6E587B38B912A82812077" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Quic.dll" />
+      <Component Id="cmpDB2CC84080BB07CC23B3AC1974EFB207">
+        <File Id="filD81A31D5F980496479057C5EB489FD05" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Numerics.dll" />
       </Component>
-      <Component Id="cmp4C09C4ACFB896EFA22C65B9F5BE4DE34" Guid="*">
-        <File Id="filFC2BFC8F3E1EFEFED9B60837E4A522EB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Requests.dll" />
+      <Component Id="cmp1DD58549A3735BD24A0E5B54557B3E2A">
+        <File Id="filF7E4A58CCD933A9D173E4B7B2C684EAD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Serialization.dll" />
       </Component>
-      <Component Id="cmpCAF06D9FCC4D0C219BC03A4826B45D91" Guid="*">
-        <File Id="fil71E99B0ABD92F8F59E1D5846261C1C5A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Security.dll" />
+      <Component Id="cmp78943D3F075D92190F6291954390AEB2">
+        <File Id="filA6C5C8620FED5A2D4F4ABC5B2356564B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Serialization.Formatters.dll" />
       </Component>
-      <Component Id="cmp131B6B1315998CAAF15559C732585498" Guid="*">
-        <File Id="filDD25F7EB15E45CF555B1231AE5B770D8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.ServicePoint.dll" />
+      <Component Id="cmpBB327BABE80FC46E84335D28D235E535">
+        <File Id="fil122F6FC06678D6EEF168BBBDFAAE11D3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Serialization.Json.dll" />
       </Component>
-      <Component Id="cmp8B077E3916D4D1F5ECC33479CB30BBDC" Guid="*">
-        <File Id="filE4989EEDEE86272AF0D705AE7B375D0E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.Sockets.dll" />
+      <Component Id="cmpADA76B5E27F25730BBCAE6D0984803AB">
+        <File Id="filC8BC20522FB94F9FF81B37338AE2D8D3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Serialization.Primitives.dll" />
       </Component>
-      <Component Id="cmpFAAF7A1EAA028BE5332E3D013FBAFCF8" Guid="*">
-        <File Id="fil35EDCD341BDEF1340EDE6D31118C4486" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.WebClient.dll" />
+      <Component Id="cmp68D0D0B20CE5FF1735D9B534E59FA16B">
+        <File Id="fil61E6E0AE8A18ECD3943609488ADD02BB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Runtime.Serialization.Xml.dll" />
       </Component>
-      <Component Id="cmpBE3C15D5A35AB52AB748EDB14789BEA3" Guid="*">
-        <File Id="filAB025D53B12CA8B84745522E54D47283" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.WebHeaderCollection.dll" />
+      <Component Id="cmp23F59B384D0BB5509FCB5F3EAD0D3503">
+        <File Id="fil82C6E78E2B8090D0EB181756988A5BAB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.AccessControl.dll" />
       </Component>
-      <Component Id="cmp9C3601FE5863E54FF6FEE75C88DC9DBB" Guid="*">
-        <File Id="fil0A885C38379FCDC2B04B2D05E7A9B91F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.WebProxy.dll" />
+      <Component Id="cmp40AF90252AE767A6236847F2C91F08F6">
+        <File Id="fil720A9D7B9CE608C669C61EE2098768E8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Claims.dll" />
       </Component>
-      <Component Id="cmp0131FCA96ED34C5A74DC0430E7B6167F" Guid="*">
-        <File Id="fil24E39D8CF83B943AFD55536B47BE1648" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.WebSockets.Client.dll" />
+      <Component Id="cmpCB12C003549A4D0EDD893810EA982015">
+        <File Id="fil27F18BE667E17AAE3823A511B44B7C21" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.Algorithms.dll" />
       </Component>
-      <Component Id="cmpEDA9481D590F79AB26547281E2F44DCA" Guid="*">
-        <File Id="filF39EA149101E15BB741BEA9281621FB7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Net.WebSockets.dll" />
+      <Component Id="cmp927132A3E6D98241E118E787AF5729BE">
+        <File Id="fil88A74DC7BC183632BCF0011B5DC81FA0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.Cng.dll" />
       </Component>
-      <Component Id="cmp903619B6C90FC96461DFEA4D7E1F7615" Guid="*">
-        <File Id="fil2848A91970A997045913A822D5FE0E2E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Numerics.dll" />
+      <Component Id="cmp2EC2ABB3AB3D2A70460DC3778DCDBC22">
+        <File Id="fil41CD6D2116ABFB141175E590C5A60C5D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.Csp.dll" />
       </Component>
-      <Component Id="cmp30B8645DA4BBB0EBCEC840BD53148428" Guid="*">
-        <File Id="fil000DFEEB0DE9E879D7E29ADE9765E153" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Numerics.Vectors.dll" />
+      <Component Id="cmp5EF0748501E1D1A9E32B92A04828677E">
+        <File Id="fil0F4C67E86BBFD890C8DB24084C801FD4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.dll" />
       </Component>
-      <Component Id="cmpA8C435FBF0002DF182C6C312E7A3A5F1" Guid="*">
-        <File Id="fil7A294F0C34862088D3C502286F82D685" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ObjectModel.dll" />
+      <Component Id="cmpB97DCEF5B99FEA82C551D3007A95407D">
+        <File Id="fil86DE200E69A228242C501FFADA3CA2BA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.Encoding.dll" />
       </Component>
-      <Component Id="cmp48020776A31E761478CAB5609FA73E83" Guid="*">
-        <File Id="fil8005C0F3F70B011E2E7965376E6D0E2C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Private.CoreLib.dll" />
+      <Component Id="cmpA969638A4713920986E51902D17BD7F8">
+        <File Id="fil87668C8CD00BFE7634E0E9E6D02770B2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.OpenSsl.dll" />
       </Component>
-      <Component Id="cmpEEDF680EF2E873BBEE2FBEABB9C26978" Guid="*">
-        <File Id="fil5368D27E563D0A221E960E0B17621BE2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Private.DataContractSerialization.dll" />
+      <Component Id="cmp1636F00A4BB3862C36725DB2957D5A00">
+        <File Id="fil2DDC534CFDD767878D2F343190A33E48" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.Primitives.dll" />
       </Component>
-      <Component Id="cmp92D55EB8FB0B77A987C30A18BA5046E1" Guid="*">
-        <File Id="filE6CF64552CAF0D443B1ED70750F8C9A3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Private.Uri.dll" />
+      <Component Id="cmp20DD936A2DA74B9EFF6C2075F3C374FA">
+        <File Id="fil84AE2A2F415D1BA9F3DE36AC805D2493" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Cryptography.X509Certificates.dll" />
       </Component>
-      <Component Id="cmp2884985A525AD11A45E89999BB3CE93F" Guid="*">
-        <File Id="filC56F98EF102E7FF6A6A969B24CBF1CAF" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Private.Xml.dll" />
+      <Component Id="cmpB3CA9226F5AF832E599C548AD74D653A">
+        <File Id="fil63051B932B315267EBCF2566525D6F3D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.dll" />
       </Component>
-      <Component Id="cmp0F038067E646AA56D8C5A057D8B44F0F" Guid="*">
-        <File Id="filDFD9E7B4D61F4DD55BA6E101213EF8FD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Private.Xml.Linq.dll" />
+      <Component Id="cmp5240390029DA4658DB1BD0B3711D4579">
+        <File Id="filF337D7F616345F5E38936C0F75F4B211" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Principal.dll" />
       </Component>
-      <Component Id="cmpF1815A8423D5E8F370457F5A65340F2F" Guid="*">
-        <File Id="filCAA430339F71E617EEF0D5C0E91F2402" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.DispatchProxy.dll" />
+      <Component Id="cmpFCCD6BB12EAA44865ABB889AA637A312">
+        <File Id="fil1534B5320B909374FA1D2250E37C29E0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.Principal.Windows.dll" />
       </Component>
-      <Component Id="cmpADBDBBC2869E32B4FDD9532ECF6E8D1E" Guid="*">
-        <File Id="filB47770F52832A359E7215AAF5DBBE091" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.dll" />
+      <Component Id="cmp08670076EE5EFE991FDFCE9828211F94">
+        <File Id="filEEF4D955A1BE49751C1AC05098B9A562" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Security.SecureString.dll" />
       </Component>
-      <Component Id="cmpC72229153DACAF3AFE113A8039EA6C96" Guid="*">
-        <File Id="fil9D058A85B6EF1A1B179BC823BCCAB7A1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.Emit.dll" />
+      <Component Id="cmp9ACF2F1339114083F3AB66D03F5A068C">
+        <File Id="fil771ED770E499814194CF39381DEC4D3C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ServiceModel.Web.dll" />
       </Component>
-      <Component Id="cmpA17F02EF19B01701E4FBEA09070DEE23" Guid="*">
-        <File Id="fil2A65B7CDA411AA2CF97F03CE2BB593F9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.Emit.ILGeneration.dll" />
+      <Component Id="cmpDAA3439E47478CBC154BFA03FA4B268A">
+        <File Id="fil5E327100539B2528120EF5D8B4C270F6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ServiceProcess.dll" />
       </Component>
-      <Component Id="cmp416E6F243E9166F2FA4B4BF7350DF4F1" Guid="*">
-        <File Id="filBD6B0EDA59053F13357BAF0701CE2330" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.Emit.Lightweight.dll" />
+      <Component Id="cmp26E7317E3EF92FB75472AFA21CA45675">
+        <File Id="fil3BD2EA93C29D7FE785034C85B3D4EE2C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Text.Encoding.CodePages.dll" />
       </Component>
-      <Component Id="cmpAE24DEB3F669DFB0957D38F9AA8B703E" Guid="*">
-        <File Id="fil3BBF097F74C2C0A040AB33769DF6F08A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.Extensions.dll" />
+      <Component Id="cmp11C8D06CA979509833143DAC5DFA07D0">
+        <File Id="fil6CFD7E5859E9BC2FAC7AF9DA962331C4" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Text.Encoding.dll" />
       </Component>
-      <Component Id="cmpD576F326EF924894BA2841A374C21B71" Guid="*">
-        <File Id="fil1303FEBC99D199188477237C94F3F49C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.Metadata.dll" />
+      <Component Id="cmp4CDAB3575EF35F8846E7E3EAAA5AD5A5">
+        <File Id="fil09669318D8615E488EAB9563FAF8AAA2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Text.Encoding.Extensions.dll" />
       </Component>
-      <Component Id="cmpCE707CF49549D5C72BC31B836CBCA7B9" Guid="*">
-        <File Id="filCCD43B7BDCCFC78257C5157E84AD45D3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.Primitives.dll" />
+      <Component Id="cmp5964AF9E8A2485674A2B5CC64A2750A3">
+        <File Id="fil22F4FB3979D3E317B812720DAB068A01" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Text.Encodings.Web.dll" />
       </Component>
-      <Component Id="cmpDA093B4E958943A9F94D1EE051AB5C8E" Guid="*">
-        <File Id="fil8C5F1270C3269197268110D1DC6613E8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Reflection.TypeExtensions.dll" />
+      <Component Id="cmp7F0D6106F8F8D00127A5505640610ED4">
+        <File Id="fil6120DEC43171CBC5D65FE6CE0A80FE84" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Text.Json.dll" />
       </Component>
-      <Component Id="cmpA415276DF9EB81A5EB9147E22BD3467C" Guid="*">
-        <File Id="fil363EBAC7D93960B2A3D2A000DD1DFF61" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Resources.Reader.dll" />
+      <Component Id="cmpAFF5C72233D9950A5D8428A649B75571">
+        <File Id="fil0FC296F1DF1231CD7CECA0EC24C7A45D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Text.RegularExpressions.dll" />
       </Component>
-      <Component Id="cmp3C2E70363F1DAB5A9A9EA67D7095E4C9" Guid="*">
-        <File Id="fil89BA4046207BE8CC27815BC0880D3F12" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Resources.ResourceManager.dll" />
+      <Component Id="cmp632B7E69CFFFAEEB127FF0E09869B45D">
+        <File Id="filB99B613F6655D8E5E68640D65160475A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Channels.dll" />
       </Component>
-      <Component Id="cmp0F66A87056ED12C57F17ADDC9DAFB84C" Guid="*">
-        <File Id="filF2331331B11286DB91B54D882C3C255F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Resources.Writer.dll" />
+      <Component Id="cmpCB3A3D4A705502FF9FA2392A282E5BFB">
+        <File Id="fil78D51D126A9310F535303CAC57F02249" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.dll" />
       </Component>
-      <Component Id="cmpED671E6839EF20D1F2FB08A3F1DC003A" Guid="*">
-        <File Id="fil3FBD56A75B26FCC61302C715D79FB4AD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.CompilerServices.Unsafe.dll" />
+      <Component Id="cmpF76B3EAF7C68E8CEFF233E2230C77D8B">
+        <File Id="fil03046FB2A21A9F8D06EACC6962E800A7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Overlapped.dll" />
       </Component>
-      <Component Id="cmpA13C043632E81C2017564A9451FE5C95" Guid="*">
-        <File Id="fil96E4CE33CCC760423027FDE15DEEEB11" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.CompilerServices.VisualC.dll" />
+      <Component Id="cmpD6B6E228F1A8D6ABA81A7B39C8603CF4">
+        <File Id="filCE021052AFBDB61BC69BEB5AB1FF6FAA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Tasks.Dataflow.dll" />
       </Component>
-      <Component Id="cmpFAB6A89EC4E11CE5E75B6BA399BDD61C" Guid="*">
-        <File Id="filB5AAA6ABE369AA174C4C571DD353D1BD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.dll" />
+      <Component Id="cmp76CF24A2A8E641FFDBBD91F130C63DB4">
+        <File Id="fil0AE5CE8B4951E945C98AF83B6CC60ED8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Tasks.dll" />
       </Component>
-      <Component Id="cmpDC7FF70AD89DA8CAEBEA523C0E6836CD" Guid="*">
-        <File Id="fil34397BD05E62DB600BDF00463955043B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Extensions.dll" />
+      <Component Id="cmpAC8B8983DD7274C18F130D2A1699D90E">
+        <File Id="fil62DC9AF5570ED700F2348A420C364D8B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Tasks.Extensions.dll" />
       </Component>
-      <Component Id="cmp60C01B82443A946E6553BF852EF2F07C" Guid="*">
-        <File Id="fil44E53AA232EA2915843C486A4E0E0C58" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Handles.dll" />
+      <Component Id="cmpF214C56C2AA6D444B4C066EBD148A0FF">
+        <File Id="fil3C4D311DAF868107F90A5E95445EAABA" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Tasks.Parallel.dll" />
       </Component>
-      <Component Id="cmp5C127ED5DD4748A145DDDE748B343C8F" Guid="*">
-        <File Id="fil180890ADB7EF207A244DD8AFDC7B0B23" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.InteropServices.dll" />
+      <Component Id="cmp80957F0A2AB3F9BC40946ED584C0B4D0">
+        <File Id="fil8154855870CFBEA10732159AE298A31A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Thread.dll" />
       </Component>
-      <Component Id="cmpE048A580967917F1C14ACB6592947FA9" Guid="*">
-        <File Id="fil2E60086CF4C4A0057285F5F975416A46" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.InteropServices.RuntimeInformation.dll" />
+      <Component Id="cmp0703A82D86636A97F9F62B8344A21116">
+        <File Id="fil0BFCCBEBB92C06FE54211220C0729A9A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.ThreadPool.dll" />
       </Component>
-      <Component Id="cmp0DBC565B738552E53C45F6CF9148D35A" Guid="*">
-        <File Id="fil29A31954F3DC8518EC8D4C5CE59273B2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Intrinsics.dll" />
+      <Component Id="cmp476DF3D61471953D6FCA3642976164EC">
+        <File Id="fil678AE09B33FD413A0A01E4CB05090E77" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Threading.Timer.dll" />
       </Component>
-      <Component Id="cmpFACEC4C9014B5F7FEC9EF268C6EAC2AC" Guid="*">
-        <File Id="fil50883777413ADE06A6DF1850AD75F07E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Loader.dll" />
+      <Component Id="cmp771667CD1A5DA41A59DC335D007CB3B6">
+        <File Id="fil58D57F38214848063CBB6E587FB4D100" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Transactions.dll" />
       </Component>
-      <Component Id="cmp36F4C8E53ECA820736422EBDCAEBB16E" Guid="*">
-        <File Id="fil28375AC7D8945FBB8930C6C57359A0F8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Numerics.dll" />
+      <Component Id="cmpDDD2DA538CB9FCF6FA4BE12F935D7C1F">
+        <File Id="fil01B229EA6D8C153FEB7E05198998C4E8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Transactions.Local.dll" />
       </Component>
-      <Component Id="cmp5233C4FEB07322B2A9A9ED1571B99034" Guid="*">
-        <File Id="fil41B001B2A344875C46181F49E536205A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Serialization.dll" />
+      <Component Id="cmp2C0EEC3394CBED67782B3F4EC8BB51D3">
+        <File Id="filA710DA447DC7CFEC9E10043D98020EFE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.ValueTuple.dll" />
       </Component>
-      <Component Id="cmp58D95EF58FB2A9D73C33BF1D5FAFE02F" Guid="*">
-        <File Id="filBA581CDBB7A49BD9B692C46057F26A94" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Serialization.Formatters.dll" />
+      <Component Id="cmp9CD3EC1002059CDBFF8D6E98A2448440">
+        <File Id="fil08057142C59531BAB8E0418A15D846FE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Web.dll" />
       </Component>
-      <Component Id="cmpF0497D441B820301FF820F4A42D0D047" Guid="*">
-        <File Id="fil4AA7E82B0C66D201470ECECA9298DA74" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Serialization.Json.dll" />
+      <Component Id="cmp873E5E83516679708C5B2EEA01248E4F">
+        <File Id="filA11EEE489D14685BF21665D2697B132E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Web.HttpUtility.dll" />
       </Component>
-      <Component Id="cmp4EA10E3ADF8D8522A30AA04EEACE26F8" Guid="*">
-        <File Id="filCA3E1CBD104D57963A6DB190FEEE6FB9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Serialization.Primitives.dll" />
+      <Component Id="cmpB59B3D8F6D7F91465E1D911A86133BF6">
+        <File Id="fil7A0CDAA81A0CF35AE15AE3AF39DE4AA1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Windows.dll" />
       </Component>
-      <Component Id="cmpE6A144534F94AEC23301EFDA4122BC61" Guid="*">
-        <File Id="fil92DD61B8B95E025749D9F05DB52E9D80" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Runtime.Serialization.Xml.dll" />
+      <Component Id="cmpD90EBA985E8192E05C0A1876131F92D3">
+        <File Id="fil3B44AAF2017F40FAFB701117470BF920" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.dll" />
       </Component>
-      <Component Id="cmp4FE79C582A7A1F7531A681A81EB2FD41" Guid="*">
-        <File Id="fil9BEFE6D8B88371B8DB48C0CD769E680B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.AccessControl.dll" />
+      <Component Id="cmp6F6C4DFE77FD54F88664D8D48EB8EE6E">
+        <File Id="fil1BC81EA7585211D154C3CB1323442826" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.Linq.dll" />
       </Component>
-      <Component Id="cmpA61EBB816498A19164B72F656852BA63" Guid="*">
-        <File Id="filED9553DF7F814C53C5C235F1F54922C3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Claims.dll" />
+      <Component Id="cmp1411C56CB619E02679AD73D1D832FC3C">
+        <File Id="fil60514A8318D021E0E3E56292AE95FADD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.ReaderWriter.dll" />
       </Component>
-      <Component Id="cmp427AF9469EECD2DC7554A0D914141DEF" Guid="*">
-        <File Id="fil27A1C769ABE4C36F6BF337C0246CFC99" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.Algorithms.dll" />
+      <Component Id="cmpFEE52CD35332132CBDE6208FF5ED140C">
+        <File Id="filF91AD9C773F933ED5AC7BE178223AD77" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.Serialization.dll" />
       </Component>
-      <Component Id="cmpB21A86142133D1DCD68181CDB2845B9D" Guid="*">
-        <File Id="fil1DB82E4A2398E106A7ECC3BA1BAE401C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.Cng.dll" />
+      <Component Id="cmpC88F212190BC55B79A5135D464219821">
+        <File Id="fil324D41EB8DE73863CE103B0E91375C57" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.XDocument.dll" />
       </Component>
-      <Component Id="cmp0750A34451B49BB1A7AC2EC627BFD6D2" Guid="*">
-        <File Id="fil80C863BAF945A2671B5789DFB2788544" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.Csp.dll" />
+      <Component Id="cmpDCC035F33B4B0A956A02C571B65DB968">
+        <File Id="filCBCCE0684B47E2F8C5DD3CBAFAF68329" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.XmlDocument.dll" />
       </Component>
-      <Component Id="cmp2E6836F2F77B85AB0ADB9C3BBA6A741F" Guid="*">
-        <File Id="filF21621D58FECAA169F30A737382702C6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.Encoding.dll" />
+      <Component Id="cmpD18A85CCA9BDE99E7EB2FE8A35A003E4">
+        <File Id="fil7BBB52E4766D4EF245C4511252166A33" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.XmlSerializer.dll" />
       </Component>
-      <Component Id="cmpDF4DBAC54A7B0EE6EF90956383793D6E" Guid="*">
-        <File Id="fil750276D3AEBE3EE0C91EE38F0ED92614" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.OpenSsl.dll" />
+      <Component Id="cmpE54487EE457EDD01877BBC592001A1E1">
+        <File Id="fil1E7423564FFBCFC9888E2BE3DEE0343B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.XPath.dll" />
       </Component>
-      <Component Id="cmp84500B1A128B42718C0FB63EFA352F22" Guid="*">
-        <File Id="fil5342916C378EC89FA56FF70A4F799724" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.Primitives.dll" />
+      <Component Id="cmpBC52ED0532767515758F98100D36BE51">
+        <File Id="filD306D3986E4D9A8AEA53FD5B89B92BAF" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/System.Xml.XPath.XDocument.dll" />
       </Component>
-      <Component Id="cmp25953CEF3FB227EC4293B7F43461A54C" Guid="*">
-        <File Id="fil39E7A38B9A5CA23ED0690F0CCC5989AB" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Cryptography.X509Certificates.dll" />
-      </Component>
-      <Component Id="cmp2042D68707B17D8D028F7A0771B81560" Guid="*">
-        <File Id="fil5DAC52BB62682FF0178890A07159276A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.dll" />
-      </Component>
-      <Component Id="cmp8393D3C2C088EEB3AB5CBD5C79ED6CA9" Guid="*">
-        <File Id="fil91F0F6EC90C833688107B63E8E42A946" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Principal.dll" />
-      </Component>
-      <Component Id="cmp2F7CC3084C9BBB316B927AC9443D028E" Guid="*">
-        <File Id="fil3CDE0BA5E5E7B5971656643F9750FA13" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.Principal.Windows.dll" />
-      </Component>
-      <Component Id="cmpFDFD73E5E1338CEEA327DD209B34259F" Guid="*">
-        <File Id="filD5218636D9723AF8CDAD319482E0118E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Security.SecureString.dll" />
-      </Component>
-      <Component Id="cmp347838A1254D43C2F90680D081683394" Guid="*">
-        <File Id="filE91FCC5038D3BA2C61A3956674323C12" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ServiceModel.Web.dll" />
-      </Component>
-      <Component Id="cmp84FD8BEC6AA869DABE06F0ED9CD0A94C" Guid="*">
-        <File Id="fil6C7918152957717AB62D39A28F2A7AD1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ServiceProcess.dll" />
-      </Component>
-      <Component Id="cmp131E18ED6F874CBBE644FF9D0C9D119E" Guid="*">
-        <File Id="filB857268FEA2E672AAD4E5458F9E0EA24" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Text.Encoding.CodePages.dll" />
-      </Component>
-      <Component Id="cmp1E2A9AADFA9E684E7E3681D198CB214E" Guid="*">
-        <File Id="fil60920D5EDD89C21A5ABD450C684849C1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Text.Encoding.dll" />
-      </Component>
-      <Component Id="cmp1B8FAEE4536FAC4ED3A70116E7BF7D5E" Guid="*">
-        <File Id="filFFB3B3FB43359E078407DD190BD8D9BE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Text.Encoding.Extensions.dll" />
-      </Component>
-      <Component Id="cmp9E843EB29852B94FB5A1C91B8D4836B0" Guid="*">
-        <File Id="fil8D632070128F0A34E9DBE4B14840CC30" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Text.Encodings.Web.dll" />
-      </Component>
-      <Component Id="cmp12807C0C3B4869159D5DC93E6DCAFC31" Guid="*">
-        <File Id="fil0725C7505EAE04880F774AB2AA021C4E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Text.Json.dll" />
-      </Component>
-      <Component Id="cmp1639F84B4A5EBCA8B4778B689C1C12AE" Guid="*">
-        <File Id="filD9A1449A2AF8F3A3BBA1B0B4279C482D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Text.RegularExpressions.dll" />
-      </Component>
-      <Component Id="cmp42DC0F0F7BCDB63F0ED693472F225F7A" Guid="*">
-        <File Id="fil4983D446F9503550A3F6951723ABC5D7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Channels.dll" />
-      </Component>
-      <Component Id="cmpE40410FB2F99B30D637F77E54176A726" Guid="*">
-        <File Id="filE948261C2C8E68BEB509A93067018A3E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.dll" />
-      </Component>
-      <Component Id="cmp3213AA45F045495E662A835BD9CAAE71" Guid="*">
-        <File Id="fil69B579E115F2FCF8A096F9BC1DF2A3C7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Overlapped.dll" />
-      </Component>
-      <Component Id="cmp9703841B0F4CA49B4705BBBEADAB54CF" Guid="*">
-        <File Id="fil1AFE5317F6BF559E4C6C6E0C5F92F720" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Tasks.Dataflow.dll" />
-      </Component>
-      <Component Id="cmpA9478BA6353CD945C19D7C8018B3C712" Guid="*">
-        <File Id="filADDA88B743879892BF06B2966A4937FC" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Tasks.dll" />
-      </Component>
-      <Component Id="cmp4AB37CBD0004ED2837483A4D34D00837" Guid="*">
-        <File Id="fil924AA752D438927E87D040A5B41D6DE1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Tasks.Extensions.dll" />
-      </Component>
-      <Component Id="cmp876257C97C42B9681C0131D5969404D5" Guid="*">
-        <File Id="filCD757DC4109DEBF9F27B9E65F008F5A9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Tasks.Parallel.dll" />
-      </Component>
-      <Component Id="cmp4FFA16E043E107B834C9F5286B3D011C" Guid="*">
-        <File Id="fil7FB8CD083DD801C1E58360911F18D295" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Thread.dll" />
-      </Component>
-      <Component Id="cmp5E014559B1F24C6815A4BDB95E92E042" Guid="*">
-        <File Id="filB5D884B518582A4B4C59A2199E2D35A2" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.ThreadPool.dll" />
-      </Component>
-      <Component Id="cmpFD043EAA849ED202CCB23BEB2711999C" Guid="*">
-        <File Id="fil9A7F545F797DA2D3DA15E30EE4E1A5C3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Threading.Timer.dll" />
-      </Component>
-      <Component Id="cmpC9AA2C495A3BED3A8CB6A88F4B56B497" Guid="*">
-        <File Id="fil40C452EA8DCFD82CF4B550D542050C5B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Transactions.dll" />
-      </Component>
-      <Component Id="cmp29B2448691CE8E93799EAB63A1F7C56F" Guid="*">
-        <File Id="fil6B2AA7FC263321D6EDF9CF1ED67F720E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Transactions.Local.dll" />
-      </Component>
-      <Component Id="cmp29DE0E2273A36484DAFA0C467D686DF2" Guid="*">
-        <File Id="fil71251C69A13E06F0EC29DFDA5C45880E" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.ValueTuple.dll" />
-      </Component>
-      <Component Id="cmp5FAA3E8C1B3A086FD290E36B3CE73FD4" Guid="*">
-        <File Id="fil4118E59D99C813589759EE45BA98CDDE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Web.dll" />
-      </Component>
-      <Component Id="cmpAE00CA3F63BED025CA147C6BACC2E317" Guid="*">
-        <File Id="filA9B54BE3952E7C92CADCCAF72FB87A63" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Web.HttpUtility.dll" />
-      </Component>
-      <Component Id="cmp6438A74961BD72091CE8BA2B0FD03750" Guid="*">
-        <File Id="fil3AD089446ED1556D36988C3BD5084110" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Windows.dll" />
-      </Component>
-      <Component Id="cmpDD1C0CE38AA4BA74EE91DB5E54A37A50" Guid="*">
-        <File Id="filF17866ACE8F7BFB365C30FACC2C9EB8F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.dll" />
-      </Component>
-      <Component Id="cmp82079DFDBAFD483D563667AC7B4E629D" Guid="*">
-        <File Id="filDBA187A5AEADE9A23708D9C9A6D1C7C7" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.Linq.dll" />
-      </Component>
-      <Component Id="cmp2DA72B47013AD269A039D3F719DCE3A0" Guid="*">
-        <File Id="filA409EF4F811D8872E999F88D9ABB447A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.ReaderWriter.dll" />
-      </Component>
-      <Component Id="cmpB82D91553A0BAB4341BD056B63829E41" Guid="*">
-        <File Id="fil2A420EB4156E9D7D4B9E41E5374DA639" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.Serialization.dll" />
-      </Component>
-      <Component Id="cmp1C37F2273A934872A2FB289C79F08559" Guid="*">
-        <File Id="filE4D7E438B0F2A5443F98DF188D9CE92D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.XDocument.dll" />
-      </Component>
-      <Component Id="cmp17869572BA5043ECC83344D6CC709B20" Guid="*">
-        <File Id="fil3987F839EDBCE979CBD1463672D646CE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.XmlDocument.dll" />
-      </Component>
-      <Component Id="cmpDC71138A33357CF29BF0378E36F45050" Guid="*">
-        <File Id="fil4582DF114658861FF062402FADA3629A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.XmlSerializer.dll" />
-      </Component>
-      <Component Id="cmp24AB0758917DC81CCE9F8874C7772A5B" Guid="*">
-        <File Id="fil7D380EB624762C55C00C19D5F4D5BC56" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.XPath.dll" />
-      </Component>
-      <Component Id="cmp615F01776CB018486D10E1878CB876E6" Guid="*">
-        <File Id="filCE9E956A1A88815EBD36D601EFA15430" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/System.Xml.XPath.XDocument.dll" />
-      </Component>
-      <Component Id="cmp8EFFAF1D7BB06521C1D328A8FEEBD2DB" Guid="*">
-        <File Id="fil14A433E781C2859F358010A1264B2007" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/ucrtbase.dll" />
-      </Component>
-      <Component Id="cmpCBC666F0387D43A3176C8E9049B7BED6" Guid="*">
-        <File Id="filF563BE3F1EC5334E3B19223805BE278D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/WindowsBase.dll" />
+      <Component Id="cmpE445D3C0B52A3202E8C90F06DBBE3BDF">
+        <File Id="filA5340B262B373B1274A9C8A273007059" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/WindowsBase.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
-    <ComponentGroup Id='JuniperStandardLib' Directory='JUNSTD'>
-      <Component Id="cmp510C485421440DB2657C921AD6EE0ACC" Guid="*">
-        <File Id="fil5AFDF324BAAC9B329D1AF871AA619A23" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Button.jun" />
+    <ComponentGroup Id="JuniperStandardLib" Directory="JUNSTD">
+      <Component Id="cmp510C485421440DB2657C921AD6EE0ACC">
+        <File Id="fil5AFDF324BAAC9B329D1AF871AA619A23" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Button.jun" />
       </Component>
-      <Component Id="cmpC6D3AB5C45F1D71C040205A0130E78E4" Guid="*">
-        <File Id="fil9D9D96E066AFF52F0F9D2FF7FCDC2904" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/CharList.jun" />
+      <Component Id="cmpC6D3AB5C45F1D71C040205A0130E78E4">
+        <File Id="fil9D9D96E066AFF52F0F9D2FF7FCDC2904" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/CharList.jun" />
       </Component>
-      <Component Id="cmp545592D58E31F1B0D4CB52277BB2E8B0" Guid="*">
-        <File Id="fil1D6A52721EC6D89801EA0720309C42C8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Color.jun" />
+      <Component Id="cmp545592D58E31F1B0D4CB52277BB2E8B0">
+        <File Id="fil1D6A52721EC6D89801EA0720309C42C8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Color.jun" />
       </Component>
-      <Component Id="cmpE8C212868EEF3F60496AA6803C26A811" Guid="*">
-        <File Id="fil2264DBC0846BFEF7B6DB6D7CB13A1C27" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Io.jun" />
+      <Component Id="cmpE8C212868EEF3F60496AA6803C26A811">
+        <File Id="fil2264DBC0846BFEF7B6DB6D7CB13A1C27" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Io.jun" />
       </Component>
-      <Component Id="cmpFDB2B26113BD4DF90946029E5E6924E8" Guid="*">
-        <File Id="fil8A0791F50C8E8F13189D191DB96450CD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/List.jun" />
+      <Component Id="cmpFDB2B26113BD4DF90946029E5E6924E8">
+        <File Id="fil8A0791F50C8E8F13189D191DB96450CD" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/List.jun" />
       </Component>
-      <Component Id="cmpCB752B57773251C972B4F014C8C2A14A" Guid="*">
-        <File Id="filEAF2D0213363DBA1EA9317F20ACD6587" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Math.jun" />
+      <Component Id="cmpCB752B57773251C972B4F014C8C2A14A">
+        <File Id="filEAF2D0213363DBA1EA9317F20ACD6587" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Math.jun" />
       </Component>
-      <Component Id="cmp6ED2249FF2C1C913E9819B15815B275E" Guid="*">
-        <File Id="fil8CF0D53991C246DAE3E5876C9876F8F3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Maybe.jun" />
+      <Component Id="cmp6ED2249FF2C1C913E9819B15815B275E">
+        <File Id="fil8CF0D53991C246DAE3E5876C9876F8F3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Maybe.jun" />
       </Component>
-      <Component Id="cmp9905E9A852081C24903B25BDDD2FB2CA" Guid="*">
-        <File Id="filA3599DA00F94F48B872A41E2901808A9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Prelude.jun" />
+      <Component Id="cmp9905E9A852081C24903B25BDDD2FB2CA">
+        <File Id="filA3599DA00F94F48B872A41E2901808A9" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Prelude.jun" />
       </Component>
-      <Component Id="cmp510018B18178A26D5226C63E5EBBD080" Guid="*">
-        <File Id="filF3E7A5AD43518F6EE41B293CFEAAB00C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Random.jun" />
+      <Component Id="cmp510018B18178A26D5226C63E5EBBD080">
+        <File Id="filF3E7A5AD43518F6EE41B293CFEAAB00C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Random.jun" />
       </Component>
-      <Component Id="cmp8CF2FECAF0E7D84F20522FDF368B5FA3" Guid="*">
-        <File Id="fil95864BC96D38469814246484C9A8603B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Signal.jun" />
+      <Component Id="cmp8CF2FECAF0E7D84F20522FDF368B5FA3">
+        <File Id="fil95864BC96D38469814246484C9A8603B" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Signal.jun" />
       </Component>
-      <Component Id="cmp11BDB00ACBB219C6A5AF312F4F695934" Guid="*">
-        <File Id="filA20CD8B078D36922D2FF71724AC25E4C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/StringM.jun" />
+      <Component Id="cmp11BDB00ACBB219C6A5AF312F4F695934">
+        <File Id="filA20CD8B078D36922D2FF71724AC25E4C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/StringM.jun" />
       </Component>
-      <Component Id="cmpFE8F8E80877F1D4E5A2806F257330202" Guid="*">
-        <File Id="filBA82DE91785A8DC0C7EF623C7D2A4484" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Time.jun" />
+      <Component Id="cmpFE8F8E80877F1D4E5A2806F257330202">
+        <File Id="filBA82DE91785A8DC0C7EF623C7D2A4484" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Time.jun" />
       </Component>
-      <Component Id="cmp1C7B7F689FAF5B45A797EC57E08C3B5E" Guid="*">
-        <File Id="filD37E902B5A0F41D0383A6F83A344EC3D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/junstd/Vector.jun" />
+      <Component Id="cmp1C7B7F689FAF5B45A797EC57E08C3B5E">
+        <File Id="filD37E902B5A0F41D0383A6F83A344EC3D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/junstd/Vector.jun" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperWrappers" Directory="WRAPPERS">
-      <Component Id="cmpIkka1cWcW_QgYzqosgupxEGFhzc" Guid="*">
-        <File Id="filBPo2eaoXMrdomSlxhGEPOC97elw" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/wrappers/AdafruitLSM303.jun" />
+      <Component Id="cmpIkka1cWcW_QgYzqosgupxEGFhzc">
+        <File Id="filBPo2eaoXMrdomSlxhGEPOC97elw" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/wrappers/AdafruitLSM303.jun" />
       </Component>
-      <Component Id="cmpAbKuk1dkilTKHSQzNrFkigkLRJo" Guid="*">
-        <File Id="filPlMt7JU8.DbZP2.rxdDZgOBYpfg" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/wrappers/AdafruitLSM303Accelerometer.jun" />
+      <Component Id="cmpAbKuk1dkilTKHSQzNrFkigkLRJo">
+        <File Id="filPlMt7JU8.DbZP2.rxdDZgOBYpfg" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/wrappers/AdafruitLSM303Accelerometer.jun" />
       </Component>
-      <Component Id="cmpNOD57awQezc.SeXyRjznwzvE4.8" Guid="*">
-        <File Id="filPzWP8MyiwZdxSE5BJP1txcl0Wr8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/wrappers/AdafruitLSM303Magnetometer.jun" />
+      <Component Id="cmpNOD57awQezc.SeXyRjznwzvE4.8">
+        <File Id="filPzWP8MyiwZdxSE5BJP1txcl0Wr8" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/wrappers/AdafruitLSM303Magnetometer.jun" />
       </Component>
-      <Component Id="cmpTBYDpifJeuf6_pf53y0c3k1zmvU" Guid="*">
-        <File Id="filCXqPwCfF3gfyOlRSCFXkViLqYj0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/wrappers/Neopixel.jun" />
+      <Component Id="cmpTBYDpifJeuf6_pf53y0c3k1zmvU">
+        <File Id="filCXqPwCfF3gfyOlRSCFXkViLqYj0" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/wrappers/Neopixel.jun" />
       </Component>
-      <Component Id="AdafruitGPSComponent" Guid="*">
-        <File Id="AdafruitGPS" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/wrappers/AdafruitGPS.jun" />
+      <Component Id="AdafruitGPSComponent">
+        <File Id="AdafruitGPS" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/wrappers/AdafruitGPS.jun" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperExamples" Directory="EXAMPLES">
-      <Component Id="cmpb8Abl4mnFVXyI27iK2iycnaY3zk" Guid="*">
-        <File Id="filBFudVB2p0_gC2.oM1n9FlXj6vfk" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/examples/Blink.jun" />
+      <Component Id="cmpb8Abl4mnFVXyI27iK2iycnaY3zk">
+        <File Id="filBFudVB2p0_gC2.oM1n9FlXj6vfk" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/examples/Blink.jun" />
       </Component>
-      <Component Id="cmp_K9RMq9PQipS_luiz3k1VjzxZ6U" Guid="*">
-        <File Id="fil1.yAOu_ijoP4sW_yUqbcb6bos2I" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/examples/ButtonDebounce.jun" />
+      <Component Id="cmp69928D1B2786F075913E28971EC95FBF">
+        <File Id="filD382A05E8BF82BD96A862DE671BA79A3" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/examples/Blink2.jun" />
       </Component>
-      <Component Id="cmpWpK2RcQXaU9.__njBbkFpDXVFrA" Guid="*">
-        <File Id="filVGETqe3jNGN2utPYeSGtEnTB3EM" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/examples/NeopixelRing.jun" />
+      <Component Id="cmp_K9RMq9PQipS_luiz3k1VjzxZ6U">
+        <File Id="fil1.yAOu_ijoP4sW_yUqbcb6bos2I" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/examples/ButtonDebounce.jun" />
+      </Component>
+      <Component Id="cmpWpK2RcQXaU9.__njBbkFpDXVFrA">
+        <File Id="filVGETqe3jNGN2utPYeSGtEnTB3EM" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/examples/NeopixelRing.jun" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperCppStd" Directory="CPPSTD">
-      <Component Id="cmp763A36BDA48B636A2321BB2EB7889161" Guid="*">
-        <File Id="fil48DCEA4B0E3CE9FFB52CA4BFBB66D5E1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/cppstd/juniper.hpp" />
+      <Component Id="cmp763A36BDA48B636A2321BB2EB7889161">
+        <File Id="fil48DCEA4B0E3CE9FFB52CA4BFBB66D5E1" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/cppstd/juniper.hpp" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperCS" Directory="CS">
-      <Component Id="cmp9B5B760B8A9F38C6FA26245A50AADD41" Guid="*">
-        <File Id="filB4EC518732D699715741BDD5FF7C1EFE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/cs/FSharp.Core.resources.dll" />
+      <Component Id="cmp9B5B760B8A9F38C6FA26245A50AADD41">
+        <File Id="filB4EC518732D699715741BDD5FF7C1EFE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/cs/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperDE" Directory="DE">
-      <Component Id="cmp0333B649BD5869D1A7CB96DD76D8FFDE" Guid="*">
-        <File Id="fil408248135A33A718045EFD17067BF0BE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/de/FSharp.Core.resources.dll" />
+      <Component Id="cmp0333B649BD5869D1A7CB96DD76D8FFDE">
+        <File Id="fil408248135A33A718045EFD17067BF0BE" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/de/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperES" Directory="ES">
-      <Component Id="cmpD75286F2BC8A98814171B3FCEF402144" Guid="*">
-        <File Id="fil2A7DD6F47D147B69C8F0E74B1F233953" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/es/FSharp.Core.resources.dll" />
+      <Component Id="cmpD75286F2BC8A98814171B3FCEF402144">
+        <File Id="fil2A7DD6F47D147B69C8F0E74B1F233953" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/es/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperFR" Directory="FR">
-      <Component Id="cmp4586669D56AF8CDF6CB073F9835C44CB" Guid="*">
-        <File Id="filBBD545B5EFA35CB44255AFA26F5C691F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/fr/FSharp.Core.resources.dll" />
+      <Component Id="cmp4586669D56AF8CDF6CB073F9835C44CB">
+        <File Id="filBBD545B5EFA35CB44255AFA26F5C691F" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/fr/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperIT" Directory="IT">
-      <Component Id="cmpB5085A68470BAE32D4A0C1617894A33B" Guid="*">
-        <File Id="fil438FB5776582FE9AF4122AF657EA9619" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/it/FSharp.Core.resources.dll" />
+      <Component Id="cmpB5085A68470BAE32D4A0C1617894A33B">
+        <File Id="fil438FB5776582FE9AF4122AF657EA9619" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/it/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperJA" Directory="JA">
-      <Component Id="cmpFF882CCEFF44BCA7BEB1D23FB09449D3" Guid="*">
-        <File Id="filB322B253F33902285E8924932E665978" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/ja/FSharp.Core.resources.dll" />
+      <Component Id="cmpFF882CCEFF44BCA7BEB1D23FB09449D3">
+        <File Id="filB322B253F33902285E8924932E665978" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/ja/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperKO" Directory="KO">
-      <Component Id="cmp9F87DE51AD36445360579AEE997DD521" Guid="*">
-        <File Id="fil926BE9D9C3145A541C0E1EC9B55A180C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/ko/FSharp.Core.resources.dll" />
+      <Component Id="cmp9F87DE51AD36445360579AEE997DD521">
+        <File Id="fil926BE9D9C3145A541C0E1EC9B55A180C" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/ko/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperPL" Directory="PL">
-      <Component Id="cmpB5D6BBEE07890D3C2A67AC4C7C7CBD95" Guid="*">
-        <File Id="fil2D9885B4BEC5E8944006C5FF4DC42C06" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/pl/FSharp.Core.resources.dll" />
+      <Component Id="cmpB5D6BBEE07890D3C2A67AC4C7C7CBD95">
+        <File Id="fil2D9885B4BEC5E8944006C5FF4DC42C06" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/pl/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperPTBR" Directory="PTBR">
-      <Component Id="cmpBF7A3F2276633F5047829F07C38EE87E" Guid="*">
-        <File Id="fil390D01490DB75F89901B5D67496D753A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/pt-BR/FSharp.Core.resources.dll" />
+      <Component Id="cmpBF7A3F2276633F5047829F07C38EE87E">
+        <File Id="fil390D01490DB75F89901B5D67496D753A" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/pt-BR/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperRU" Directory="RU">
-      <Component Id="cmp70BA7712A1D0643AA2A1AFE770151821" Guid="*">
-        <File Id="filCBB1CEBB506257E594376D41C2E475E5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/ru/FSharp.Core.resources.dll" />
+      <Component Id="cmp70BA7712A1D0643AA2A1AFE770151821">
+        <File Id="filCBB1CEBB506257E594376D41C2E475E5" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/ru/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperTR" Directory="TR">
-      <Component Id="cmpDF7BE1A18CA0E7182D308F725EC5DA84" Guid="*">
-        <File Id="filB88065EC7E8D683084BAC36D34275DB6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/tr/FSharp.Core.resources.dll" />
+      <Component Id="cmpDF7BE1A18CA0E7182D308F725EC5DA84">
+        <File Id="filB88065EC7E8D683084BAC36D34275DB6" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/tr/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperZHHANS" Directory="ZHHANS">
-      <Component Id="cmpC429B5B12223927DD54F3E541D49F6F1" Guid="*">
-        <File Id="filF25E66F28F2C63C65509168F19E8A827" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/zh-Hans/FSharp.Core.resources.dll" />
+      <Component Id="cmpC429B5B12223927DD54F3E541D49F6F1">
+        <File Id="filF25E66F28F2C63C65509168F19E8A827" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/zh-Hans/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="JuniperZHHANT" Directory="ZHHANT">
-      <Component Id="cmp479DCD841408C1919DC562DEFC00D8A6" Guid="*">
-        <File Id="fil5D6DE57D8276A3C4E3607FF6C9E2984D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net6.0/win-x64/zh-Hant/FSharp.Core.resources.dll" />
+      <Component Id="cmp479DCD841408C1919DC562DEFC00D8A6">
+        <File Id="fil5D6DE57D8276A3C4E3607FF6C9E2984D" KeyPath="yes" Source="../../Juniper/Juniper/bin/Release/net8.0/win-x64/zh-Hant/FSharp.Core.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
